@@ -46,6 +46,17 @@
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+
+        /* Better feel for the Featured and Blog carousels */
+#home-featured-coverer, #home-blog-grid {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Momentum scrolling for iOS */
+    scroll-snap-type: x mandatory;
+}
+
+#home-featured-coverer > div, #home-blog-grid > div {
+    scroll-snap-align: start;
+}
         
         /* Hide Scrollbar but keep functionality */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -1999,15 +2010,16 @@
             // Using w-[70%] on mobile to make the cards wider and visually better for users to interact with
 // This allows 2 cards to sit side-by-side on mobile, which is standard for shopping
 // Change this line
+// Change this inside createProductCard:
 const sizingClasses = isCarouselItem 
-    ? 'min-w-[75%] sm:min-w-[45%] md:min-w-0 snap-start flex-shrink-0' 
+    ? 'w-[75%] sm:w-[45%] md:w-auto flex-shrink-0 snap-start' 
     : '';
             return `
                 <div class="bg-white flex flex-col p-3 md:p-4 rounded-lg border border-slate-200 hover:border-slate-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group relative cursor-pointer ${sizingClasses}" onclick="navigate('product', {id: ${product.id}})">
                     ${badge}
                     
                     <div class="aspect-square flex items-center justify-center mb-3 md:mb-4 overflow-hidden bg-slate-50 rounded relative">
-                        <img src="${product.image}" class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500">
+                        <img src="${product.image}" class="w-full h-full object-cover  group-hover:scale-105 transition-transform duration-500">
                         <button onclick="event.stopPropagation(); addToCart(${product.id});" class="absolute bottom-2 right-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 bg-white text-darker hover:bg-primary hover:text-white hover:border-primary border-2 border-slate-200 p-2 md:p-2.5 rounded-full shadow-lg transition-all z-10 cursor-pointer flex items-center justify-center group/btn" title="Add to Cart">
                             <i data-lucide="shopping-cart" class="w-4 h-4 md:w-5 md:h-5"></i>
                         </button>
@@ -2057,11 +2069,12 @@ const sizingClasses = isCarouselItem
         // --- BLOG RENDERING LOGIC ---
         function createBlogCard(article, isCarouselItem = false) {
             // Updated min width to 45% for mobile so that at least two cards are visible on the viewport
+// Change this inside createProductCard:
 const sizingClasses = isCarouselItem 
-    ? 'min-w-[85%] sm:min-w-[45%] md:min-w-0 snap-start flex-shrink-0' 
+    ? 'w-[75%] sm:w-[45%] md:w-auto flex-shrink-0 snap-start' 
     : '';
             return `
-                <div class="bg-white flex flex-col rounded-lg overflow-hidden border border-slate-200 shadow-sm group cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all text-left ${sizingClasses}" onclick="navigate('blog-single')">
+                <div class="bg-white flex flex-col rounded-lg  overflow-hidden border border-slate-200 shadow-sm group cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all text-left ${sizingClasses}" onclick="navigate('blog-single')">
                     <div class="aspect-[16/10] overflow-hidden">
                         <img src="${article.img}?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
