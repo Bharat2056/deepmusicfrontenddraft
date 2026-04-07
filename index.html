@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Shop Nepal | Powered by Deep Music Theme</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#44bcbe', // Deep Music Navy Blue
+                        primaryHover: '#1e40af', // Lighter Navy
+                        dark: '#0f172a', // Slate 900
+                        darker: '#020617', // Slate 950
+                        light: '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.3s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        
+        /* Hide Scrollbar but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* SPA View Transitions */
+        .page-view { display: none; opacity: 0; }
+        .page-view.active { display: block; animation: fadeIn 0.4s ease-out forwards; }
+        
+        /* Custom Checkbox */
+        .filter-checkbox { accent-color: #1e3a8a; width: 1.15rem; height: 1.15rem; cursor: pointer; }
+
+        /* Toast Notifications */
+        #toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+        .toast { background: #020617; color: white; padding: 16px 24px; border-radius: 6px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); animation: slideInRight 0.3s forwards, fadeOut 0.3s forwards 3s; display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; border-left: 4px solid #1e3a8a; }
+        @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; transform: translateY(10px); } }
+
+        /* Accordions */
+        .faq-answer, .cat-list-sub { display: none; }
+        .faq-item.active .faq-answer { display: block; padding-top: 10px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        .cat-list-item.expanded .cat-list-sub { display: block; }
+        
+        /* Active States */
+        .active-cat > div { color: #1e3a8a; font-weight: 700; }
+        .active-subcat { color: #1e3a8a; font-weight: 600;}
+        
+        /* Line Clamp */
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* Prose Styles for Blog */
+        .prose h3 { margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; color: #020617; font-size: 1.5rem;}
+        .prose p { margin-bottom: 1.25rem; line-height: 1.75; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .prose li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- TOP BAR (Guitar Shop Nepal Content) -->
+    <div class="bg-darker text-slate-300 text-[11px] uppercase tracking-wider py-2 px-4 hidden md:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex space-x-6">
+                <a href="tel:+97714246061" class="hover:text-white transition-colors flex items-center"><i data-lucide="phone" class="w-3.5 h-3.5 mr-2"></i> +977 1-4246061</a>
+                <a href="mailto:info@guitarshopnepal.com" class="hover:text-white transition-colors flex items-center"><i data-lucide="mail" class="w-3.5 h-3.5 mr-2"></i> info@guitarshopnepal.com</a>
+                <a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-2"></i> Jyatha, Thamel, Kathmandu</a>
+            </div>
+            <div class="flex space-x-6 items-center">
+                <span class="text-primary font-bold">Nepal's Premier Guitar Destination</span>
+                <div class="flex space-x-4 border-l border-slate-700 pl-6">
+                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 bg-white">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                
+                <!-- Logo (Deep Music Styling) -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer group" onclick="navigate('home')">
+                    <img src="./images/logo.jpg" alt="Deep Music Logo" class="h-20 md:h-20 w-20 object-cover hover:opacity-80 transition-opacity">
+                </div>
+
+                <!-- Search Bar (Desktop) -->
+                <div class="hidden lg:flex flex-1 max-w-2xl mx-8">
+                    <div class="relative w-full flex shadow-sm rounded-md overflow-hidden border border-slate-300 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                        <select id="header-search-category" class="bg-slate-50 border-r border-slate-300 text-slate-600 text-sm px-3 focus:outline-none cursor-pointer font-medium">
+                            <option value="ALL">All Categories</option>
+                            <option value="Guitars">Guitars</option>
+                            <option value="Amps">Amps</option>
+                            <option value="Pedals & Effects">Pedals & FX</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                        <input type="text" id="header-search-input" class="w-full bg-white py-2 pl-4 pr-12 focus:outline-none text-sm" placeholder="Search for PRS, Cort, Blackstar...">
+                        <button onclick="executeSearch('desktop')" class="bg-primary text-white px-5 hover:bg-primaryHover transition-colors flex items-center justify-center cursor-pointer">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Icons (User, Wishlist, Cart) -->
+                <div class="flex items-center space-x-4 md:space-x-7">
+                    <button onclick="navigate('account')" class="text-slate-600 hover:text-primary transition-colors flex flex-col items-center hidden sm:flex cursor-pointer group">
+                        <i data-lucide="user" class="w-5 h-5 md:w-6 md:h-6 mb-1 group-hover:fill-primary/10"></i>
+                        <span class="text-[10px] uppercase font-bold hidden md:block">Account</span>
+                    </button>
+                    <button class="text-slate-600 hover:text-primary transition-colors flex flex-col items-center hidden sm:flex group cursor-pointer">
+                        <div class="relative">
+                            <i data-lucide="heart" class="w-5 h-5 md:w-6 md:h-6 mb-1 group-hover:fill-primary/10"></i>
+                            <span class="absolute -top-1.5 -right-2 bg-darker text-white text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[16px] text-center">0</span>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold hidden md:block">Wishlist</span>
+                    </button>
+                    <button onclick="navigate('cart')" class="text-slate-600 hover:text-primary transition-colors flex flex-col items-center cursor-pointer group">
+                        <div class="relative">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 md:w-6 md:h-6 mb-1 group-hover:fill-primary/10"></i>
+                            <span class="cart-badge absolute -top-1.5 -right-2 bg-primary text-white text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[16px] text-center shadow-sm">0</span>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold hidden md:block">Cart</span>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="lg:hidden text-slate-600 hover:text-primary transition-colors p-1 cursor-pointer">
+                        <i data-lucide="menu" id="menu-icon-bars" class="w-6 h-6 block"></i>
+                        <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY NAVIGATION (Desktop) -->
+        <nav class="hidden lg:block bg-white border-t border-slate-100 shadow-sm relative z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <ul class="flex space-x-6 lg:space-x-8 text-xs lg:text-[13px] font-bold text-darker uppercase tracking-wide">
+                    <li><a href="javascript:void(0)" onclick="navigate('home')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Home</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('shop')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Shop All</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Guitars'})" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Guitars</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Amps'})" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Amps</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Pedals & Effects'})" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Pedals</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('endorsement')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Endorsement</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('faq')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">FAQs</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('about')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">About Us</a></li>
+                    <li><a href="javascript:void(0)" onclick="navigate('contact')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Contact</a></li>
+                    <li class="ml-auto text-primary flex items-center"><i data-lucide="zap" class="w-3.5 h-3.5 mr-1.5 fill-current"></i> <a href="javascript:void(0)" onclick="navigate('shop', {sale: true})" class="py-3">Deals</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-2xl overflow-y-auto border-t border-slate-100 z-50 origin-top animate-fadeIn max-h-[calc(100vh-64px)]">
+            <div class="px-4 py-5 space-y-1 pb-24">
+                <div class="relative mb-4">
+                    <input type="text" id="mobile-search-input" class="w-full bg-slate-100 border border-slate-300 rounded-md py-2.5 px-3 text-sm focus:outline-none focus:border-primary" placeholder="Search products...">
+                    <button onclick="executeSearch('mobile')" class="absolute right-3 top-2.5 cursor-pointer"><i data-lucide="search" class="w-5 h-5 text-slate-400"></i></button>
+                </div>
+                <a href="javascript:void(0)" onclick="navigate('home'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Home</a>
+                <a href="javascript:void(0)" onclick="navigate('shop'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Shop All Categories</a>
+                <a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Guitars'}); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Guitars & Basses</a>
+                <a href="javascript:void(0)" onclick="navigate('brands'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Our Brands</a>
+                <a href="javascript:void(0)" onclick="navigate('blog'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Blog & Reviews</a>
+                <a href="javascript:void(0)" onclick="navigate('faq'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">FAQs</a>
+                <a href="javascript:void(0)" onclick="navigate('about'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">About Us</a>
+                <a href="javascript:void(0)" onclick="navigate('contact'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Contact Us</a>
+                <a href="javascript:void(0)" onclick="navigate('account'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">My Account</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!--                 PAGE: HOME                 -->
+    <!-- ========================================== -->
+    <main id="page-home" class="page-view active flex-1">
+        <!-- Hero Section -->
+        <section class="relative bg-darker text-white overflow-hidden group">
+            <div class="absolute inset-0 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1514649923863-ceaf75b7ec00?q=80&w=2070&auto=format&fit=crop" alt="Guitar Shop Nepal Banner" class="w-full h-full object-cover opacity-40 scale-105 transition-transform duration-[15s] group-hover:scale-100">
+                <div class="absolute inset-0 bg-gradient-to-r from-darker via-darker/90 to-transparent"></div>
+            </div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32 lg:py-48">
+                <div class="max-w-2xl">
+                    <span class="inline-block py-1 px-2.5 rounded bg-primary text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 shadow-sm border border-blue-400/50">Nepal's Premier Guitar Destination</span>
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 md:mb-6 leading-[1.1] uppercase">
+                        Welcome to <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-400">Guitar Shop.</span>
+                    </h1>
+                    <p class="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-xl font-light">
+                        Located in the heart of Kathmandu, we offer the finest selection of acoustic and electric guitars, amplifiers, and pro audio gear from top global brands.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+                        <button onclick="navigate('shop')" class="bg-primary hover:bg-primaryHover text-white px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors text-center shadow-lg shadow-primary/30">
+                            Shop Our Gear
+                        </button>
+                        <button onclick="navigate('brands')" class="bg-transparent border-2 border-white/80 hover:bg-white hover:text-darker text-white px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors text-center backdrop-blur-sm">
+                            Explore Brands
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Badges Strip -->
+        <section class="bg-white border-b border-slate-200 py-4 md:py-6 hidden md:block">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center text-xs lg:text-sm font-bold uppercase tracking-wider text-slate-700">
+                    <div class="flex items-center"><i data-lucide="shield-check" class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3"></i> 100% Genuine Products</div>
+                    <div class="flex items-center"><i data-lucide="award" class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3"></i> Top-Notch Services</div>
+                    <div class="flex items-center"><i data-lucide="wrench" class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3"></i> Pro Repair Services</div>
+                    <div class="flex items-center"><i data-lucide="headphones" class="w-4 h-4 md:w-5 md:h-5 text-primary mr-2 md:mr-3"></i> Expert Musician Support</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Grid -->
+        <section class="py-10 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-4xl font-black text-darker uppercase tracking-tight mb-2 md:mb-4">Explore Categories</h2>
+                <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto rounded-full"></div>
+            </div>
+            
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+                <!-- Amps -->
+                <div onclick="navigate('shop', {cat: 'Amps'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.wvfIDDeR-pv33UrEEmXezwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Amps</span>
+                </div>
+                <!-- Accessories -->
+                <div onclick="navigate('shop', {cat: 'Accessories'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://daganghalal.blob.core.windows.net/28326/Product/1000x1000__43-1644229909421.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Accessories</span>
+                </div>
+                <!-- Guitars -->
+                <div onclick="navigate('shop', {cat: 'Guitars'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1550291652-6ea9114a47b1?q=80&w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Guitars</span>
+                </div>
+                <!-- Keyboards -->
+                <div onclick="navigate('shop', {cat: 'Keyboards'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Keyboards</span>
+                </div>
+                <!-- Strings -->
+                <div onclick="navigate('shop', {cat: 'Strings'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1516961642265-531546e84af2?q=80&w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Strings</span>
+                </div>
+                <!-- Headphones -->
+                <div onclick="navigate('shop', {cat: 'Headphones'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Headphones</span>
+                </div>
+                <!-- Ukulele -->
+                <div onclick="navigate('shop', {cat: 'Ukulele'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.OUYWL4n0dZcrz7IwgNJxyQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Ukulele</span>
+                </div>
+                <!-- Drums -->
+                <div onclick="navigate('shop', {cat: 'Drums'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.ZrgMZ_A2OPEylBG6a8dcpgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Drums</span>
+                </div>
+                <!-- Microphones -->
+                <div onclick="navigate('shop', {cat: 'Microphones'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Microphones</span>
+                </div>
+                <!-- Studio & Recording -->
+                <div onclick="navigate('shop', {cat: 'Studio & Recording'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Studio & Recording</span>
+                </div>
+                <!-- Pedals & Multi-Effects -->
+                <div onclick="navigate('shop', {cat: 'Pedals & Multi-Effects'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.iSdDRNaBjk0WlrXb2xdcogHaDt?rs=1&pid=ImgDetMain&o=7&rm=3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">Pedals & Multi-Effects</span>
+                </div>
+                <!-- PA system & Speakers -->
+                <div onclick="navigate('shop', {cat: 'PA System & Speakers'})" class="relative bg-gray-900 h-28 md:h-36 lg:h-40 flex items-center justify-center overflow-hidden cursor-pointer rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=500&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-50 group-hover:opacity-60">
+                    <span class="relative z-10 font-bold text-sm text-white uppercase tracking-wider text-center px-2">PA System & Speakers</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Gear Section (Dynamic Tabs + Carousel) -->
+        <section class="py-10 md:py-16 bg-white border-t border-slate-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Tab Headers -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-10 border-b border-slate-200 pb-2">
+                    <h2 class="text-2xl md:text-3xl font-black text-darker uppercase tracking-tight mb-4 md:mb-0">Featured Gear</h2>
+                    <div class="flex space-x-4 md:space-x-6 w-full md:w-auto overflow-x-auto hide-scrollbar">
+                        <button onclick="renderFeatured('new')" id="btn-feat-new" class="feat-tab-btn active text-xs md:text-sm font-bold uppercase tracking-wider pb-3 md:pb-4 border-b-[3px] border-primary text-primary transition-colors whitespace-nowrap cursor-pointer">New Arrivals</button>
+                        <button onclick="renderFeatured('best')" id="btn-feat-best" class="feat-tab-btn text-xs md:text-sm font-bold uppercase tracking-wider pb-3 md:pb-4 border-b-[3px] border-transparent text-slate-400 hover:text-darker transition-colors whitespace-nowrap cursor-pointer">Best Sellers</button>
+                        <button onclick="renderFeatured('sale')" id="btn-feat-sale" class="feat-tab-btn text-xs md:text-sm font-bold uppercase tracking-wider pb-3 md:pb-4 border-b-[3px] border-transparent text-slate-400 hover:text-darker transition-colors whitespace-nowrap cursor-pointer">On Sale</button>
+                    </div>
+                </div>
+                
+                <!-- Dynamic Grid / Mobile Carousel -->
+                <div id="home-featured-container" class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 pb-6 md:pb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 hide-scrollbar">
+                    <!-- Injected via JS -->
+                </div>
+                
+                <div class="text-center mt-2 md:mt-6">
+                    <button onclick="navigate('shop')" class="border-2 border-darker text-darker hover:bg-darker hover:text-white px-6 py-2.5 md:px-8 md:py-3 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors inline-flex items-center cursor-pointer">
+                        View All Products <i data-lucide="arrow-right" class="w-3 h-3 md:w-4 md:h-4 ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Banner -->
+        <section class="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="bg-darker rounded-2xl overflow-hidden relative flex items-center shadow-2xl h-[320px] md:h-auto group cursor-pointer" onclick="navigate('shop', {brand: 'PRS Guitars'})">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=2070&auto=format&fit=crop" alt="Promo" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
+                </div>
+                <div class="relative z-10 p-6 md:p-16 w-full md:w-2/3 lg:w-1/2">
+                    <span class="bg-white text-primary text-[10px] md:text-xs font-bold px-2.5 py-1 md:px-3 md:py-1.5 uppercase tracking-widest rounded mb-4 md:mb-6 inline-block">New Arrival</span>
+                    <h2 class="text-2xl md:text-5xl font-black uppercase text-white mb-4 md:mb-6 tracking-tight leading-tight">PRS SE Series Arrival</h2>
+                    <p class="text-slate-200 mb-6 md:mb-8 max-w-md font-medium text-sm md:text-lg">Experience the unparalleled craftsmanship and tonal versatility of the newest PRS SE Custom 24 models.</p>
+                    <button class="bg-white hover:bg-slate-100 text-primary px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors shadow-lg">
+                        Shop PRS Guitars
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Demos / Reviews Section -->
+        <section class="py-10 md:py-16 bg-darker text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-end mb-8 md:mb-10">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight mb-2">Watch & Listen</h2>
+                        <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary rounded-full mb-3 md:mb-4"></div>
+                        <p class="text-slate-400 text-xs md:text-sm">Gear demos, reviews, and performances curated for you.</p>
+                    </div>
+                    <button onclick="navigate('blog')" class="hidden sm:flex text-xs md:text-sm font-bold text-primary hover:text-white uppercase tracking-wider items-center transition-colors cursor-pointer">
+                        More Videos <i data-lucide="arrow-right" class="w-3 h-3 md:w-4 md:h-4 ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Video 1 -->
+                    <div class="group cursor-pointer">
+                        <div class="relative rounded-lg overflow-hidden aspect-video bg-slate-800 mb-3 md:mb-4 border border-slate-700 group-hover:border-primary transition-colors">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 md:w-14 md:h-14 bg-primary/90 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform backdrop-blur-sm">
+                                    <i data-lucide="play" class="w-5 h-5 md:w-6 md:h-6 ml-1 fill-current"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-2 right-2 md:bottom-3 md:right-3 bg-black/80 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded">12:45</span>
+                        </div>
+                        <h3 class="font-bold text-base md:text-lg leading-tight mb-1 group-hover:text-primary transition-colors">PRS SE Custom 24 Tone Review</h3>
+                        <p class="text-xs md:text-sm text-slate-400">Gear Reviews • 5K Views</p>
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="group cursor-pointer hidden md:block">
+                        <div class="relative rounded-lg overflow-hidden aspect-video bg-slate-800 mb-3 md:mb-4 border border-slate-700 group-hover:border-primary transition-colors">
+                            <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 md:w-14 md:h-14 bg-primary/90 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform backdrop-blur-sm">
+                                    <i data-lucide="play" class="w-5 h-5 md:w-6 md:h-6 ml-1 fill-current"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-2 right-2 md:bottom-3 md:right-3 bg-black/80 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded">08:20</span>
+                        </div>
+                        <h3 class="font-bold text-base md:text-lg leading-tight mb-1 group-hover:text-primary transition-colors">Blackstar ID:Core 10 V3 Settings Guide</h3>
+                        <p class="text-xs md:text-sm text-slate-400">Amp Walkthroughs • 3.2K Views</p>
+                    </div>
+                    <!-- Video 3 -->
+                    <div class="group cursor-pointer hidden lg:block">
+                        <div class="relative rounded-lg overflow-hidden aspect-video bg-slate-800 mb-3 md:mb-4 border border-slate-700 group-hover:border-primary transition-colors">
+                            <img src="https://images.unsplash.com/photo-1460036521480-5a7a72d31c4f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 md:w-14 md:h-14 bg-primary/90 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform backdrop-blur-sm">
+                                    <i data-lucide="play" class="w-5 h-5 md:w-6 md:h-6 ml-1 fill-current"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-2 right-2 md:bottom-3 md:right-3 bg-black/80 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded">15:10</span>
+                        </div>
+                        <h3 class="font-bold text-base md:text-lg leading-tight mb-1 group-hover:text-primary transition-colors">NUX MG-300 Multi-FX Deep Dive</h3>
+                        <p class="text-xs md:text-sm text-slate-400">Pedal Tutorials • 8K Views</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-10 md:py-16 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
+                    <div class="order-2 lg:order-1 relative h-[200px] md:h-[450px] rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Guitar Repair">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker/90 via-darker/30 to-transparent flex items-end p-4 md:p-8">
+                            <div class="flex items-center text-white">
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-lg flex items-center justify-center mr-3 md:mr-4 shadow-lg">
+                                    <i data-lucide="wrench" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm md:text-lg uppercase tracking-wide">Professional Luthiers</h4>
+                                    <p class="text-xs md:text-sm text-slate-300">Certified by Major Brands</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <span class="text-primary font-bold uppercase tracking-widest text-xs md:text-sm mb-1 md:mb-2 block">Service Center</span>
+                        <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight mb-4 md:mb-6 text-darker">Expert Guitar Repair & Setup</h2>
+                        <p class="text-slate-600 mb-6 md:mb-8 leading-relaxed text-sm md:text-lg">
+                            We don't just sell guitars; we maintain them. Bring your instruments to Guitar Shop Nepal for professional setups, fret leveling, restringing, and electronic repairs.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 md:gap-y-4 gap-x-8 mb-8 md:mb-10 text-slate-700 font-medium text-sm md:text-base">
+                            <div class="flex items-center"><i data-lucide="check-circle-2" class="text-primary w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3"></i> Pro Intonation Setup</div>
+                            <div class="flex items-center"><i data-lucide="check-circle-2" class="text-primary w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3"></i> Fret Dressing & Care</div>
+                            <div class="flex items-center"><i data-lucide="check-circle-2" class="text-primary w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3"></i> Electronic Upgrades</div>
+                            <div class="flex items-center"><i data-lucide="check-circle-2" class="text-primary w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3"></i> Restringing & Cleaning</div>
+                        </div>
+                        <button onclick="navigate('contact')" class="w-full sm:w-auto bg-darker hover:bg-slate-800 text-white px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors shadow-lg cursor-pointer">
+                            Contact Services
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Articles / Blog Preview -->
+        <section class="py-10 md:py-16 bg-slate-50 border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="text-2xl md:text-3xl font-black text-darker uppercase tracking-tight mb-2 md:mb-4">Latest from the Blog</h2>
+                    <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto rounded-full"></div>
+                </div>
+                
+                <!-- Blog Mobile Carousel / Desktop Grid -->
+                <div id="home-blog-grid" class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-8 pb-6 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 hide-scrollbar">
+                    <!-- Injected via JS -->
+                </div>
+                
+                <div class="text-center mt-2 md:mt-4">
+                    <button onclick="navigate('blog')" class="text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors inline-flex items-center cursor-pointer">
+                        Read All Posts <i data-lucide="arrow-right" class="w-3 h-3 md:w-4 md:h-4 ml-1 md:ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Logos -->
+        <section class="py-8 md:py-12 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 md:mb-8">Official Distributor For Top Brands</p>
+                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                    <span onclick="navigate('shop', {brand: 'Fender'})" class="text-xl md:text-3xl font-extrabold font-serif cursor-pointer hover:text-primary transition">FENDER</span>
+                    <span onclick="navigate('shop', {brand: 'PRS Guitars'})" class="text-xl md:text-3xl font-extrabold font-serif italic cursor-pointer hover:text-primary transition">PRS Guitars</span>
+                    <span onclick="navigate('shop', {brand: 'Cort'})" class="text-xl md:text-3xl font-extrabold tracking-tighter cursor-pointer hover:text-primary transition">CORT</span>
+                    <span onclick="navigate('shop', {brand: 'Blackstar'})" class="text-xl md:text-3xl font-extrabold cursor-pointer hover:text-primary transition">Blackstar</span>
+                    <span onclick="navigate('shop', {brand: 'NUX'})" class="text-xl md:text-3xl font-black tracking-widest cursor-pointer hover:text-primary transition">NUX</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!--                 PAGE: SHOP                 -->
+    <!-- ========================================== -->
+    <main id="page-shop" class="page-view bg-white py-6 md:py-8 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="mb-6 md:mb-8 border-b border-slate-200 pb-4 md:pb-6">
+                <nav class="text-xs md:text-sm text-slate-500 mb-2 md:mb-3 flex items-center space-x-2 font-medium">
+                    <a href="javascript:void(0)" onclick="navigate('home')" class="hover:text-primary cursor-pointer"><i data-lucide="home" class="w-3 h-3 md:w-4 md:h-4"></i></a> 
+                    <span>/</span> 
+                    <span class="text-darker uppercase tracking-wider text-[10px] md:text-xs font-bold">Shop</span>
+                </nav>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4">
+                    <h1 class="text-2xl md:text-4xl font-black text-darker uppercase tracking-tight" id="shop-title">All Products</h1>
+                    <span class="text-xs md:text-sm font-bold text-slate-500 bg-slate-100 px-2 py-1 md:px-3 md:py-1.5 rounded" id="shop-results-count">Showing results</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-6 md:gap-8">
+                <!-- LEFT SIDEBAR -->
+                <aside class="w-full lg:w-1/4 flex-shrink-0">
+                    <button class="lg:hidden w-full mb-4 bg-slate-100 text-darker text-sm font-bold py-2.5 rounded flex justify-center items-center cursor-pointer hover:bg-slate-200 transition-colors" onclick="document.getElementById('mobile-filters').classList.toggle('hidden')">
+                        <i data-lucide="filter" class="w-4 h-4 mr-2"></i> Show Filters
+                    </button>
+                    
+                    <div id="mobile-filters" class="hidden lg:block sticky top-20 md:top-28 bg-white lg:bg-transparent p-4 lg:p-0 rounded border border-slate-200 lg:border-0 mb-6 lg:mb-0">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xs md:text-sm font-bold text-darker uppercase tracking-widest">Categories</h3>
+                            <button onclick="clearFilters()" class="text-[10px] md:text-xs text-primary font-bold hover:underline cursor-pointer">Reset All</button>
+                        </div>
+                        
+                        <!-- Dynamic Categories Array -->
+                        <ul id="sidebar-category-list" class="space-y-1 text-xs md:text-sm text-slate-600 font-medium border-b border-slate-200 pb-4 md:pb-6 mb-4 md:mb-6">
+                            <!-- Categories generated by JS -->
+                        </ul>
+
+                        <!-- Filter Group: Brands -->
+                        <div class="mb-4 md:mb-6 border-b border-slate-200 pb-4 md:pb-6">
+                            <h4 class="text-xs md:text-sm font-bold text-darker uppercase tracking-widest mb-3 md:mb-4">Brands</h4>
+                            <div class="space-y-2.5 md:space-y-3" id="brand-filters-container">
+                                <!-- Brands generated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Filter Group: Price -->
+                        <div>
+                            <h4 class="text-xs md:text-sm font-bold text-darker uppercase tracking-widest mb-3 md:mb-4">Price Range (NRs)</h4>
+                            <div class="flex items-center space-x-2">
+                                <input type="number" id="price-min" placeholder="Min" class="w-full border border-slate-300 rounded p-1.5 md:p-2 text-xs md:text-sm focus:border-primary outline-none">
+                                <span class="text-slate-400">-</span>
+                                <input type="number" id="price-max" placeholder="Max" class="w-full border border-slate-300 rounded p-1.5 md:p-2 text-xs md:text-sm focus:border-primary outline-none">
+                            </div>
+                            <button onclick="applyFilters()" class="w-full mt-3 md:mt-4 bg-darker text-white py-2 md:py-2.5 text-xs md:text-sm font-bold rounded hover:bg-slate-800 transition-colors uppercase tracking-widest cursor-pointer">Apply Price</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Product Grid Main -->
+                <div class="w-full lg:w-3/4">
+                    
+                    <!-- Top Bar Filters -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-200 pb-3 md:pb-4 mb-4 md:mb-6 gap-3 md:gap-4">
+                        <div class="flex space-x-4 md:space-x-6 text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar">
+                            <button onclick="setTopFilter('ALL', this)" class="top-filter-btn text-darker border-b-2 border-darker pb-1 transition-colors cursor-pointer whitespace-nowrap">ALL</button>
+                            <button onclick="setTopFilter('NEW', this)" class="top-filter-btn hover:text-darker pb-1 border-b-2 border-transparent transition-colors cursor-pointer whitespace-nowrap">NEW</button>
+                            <button onclick="setTopFilter('SALE', this)" class="top-filter-btn hover:text-darker pb-1 border-b-2 border-transparent transition-colors cursor-pointer whitespace-nowrap">SALE</button>
+                        </div>
+                        <div class="flex items-center space-x-4 w-full md:w-auto">
+                            <select id="sort-select" onchange="applyFilters()" class="w-full md:w-auto border border-slate-200 rounded bg-white text-[10px] md:text-xs font-bold text-slate-700 py-1.5 md:py-2 px-2 md:px-3 focus:outline-none focus:border-primary cursor-pointer uppercase tracking-wider">
+                                <option value="default">Default Sorting</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div id="shop-product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
+                        <!-- Products injected via JS -->
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div id="shop-empty-state" class="hidden py-10 md:py-16 text-center">
+                        <i data-lucide="frown" class="w-12 h-12 md:w-16 md:h-16 text-slate-300 mx-auto mb-3 md:mb-4"></i>
+                        <h3 class="text-lg md:text-xl font-bold text-darker mb-1 md:mb-2">No products found</h3>
+                        <p class="text-sm text-slate-500 mb-4 md:mb-6">Try adjusting your filters or search query.</p>
+                        <button onclick="clearFilters()" class="bg-primary text-white px-4 md:px-6 py-2 md:py-2.5 rounded font-bold text-xs md:text-sm hover:bg-primaryHover transition-colors uppercase tracking-widest cursor-pointer">Reset Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!--             PAGE: PRODUCT DETAIL           -->
+    <!-- ========================================== -->
+    <main id="page-product" class="page-view bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Breadcrumbs -->
+            <nav class="text-sm text-gray-500 mb-8 border-b border-gray-200 pb-4 flex items-center space-x-2">
+                <a href="#home" onclick="navigate('home')" class="hover:text-primary"><i data-lucide="home" class="w-4 h-4"></i></a> 
+                <span>/</span> 
+                <a href="#shop" onclick="navigate('shop')" class="hover:text-primary font-bold uppercase tracking-wider text-xs">Acoustic Guitars</a> 
+                <span>/</span> 
+                <span class="text-gray-900 font-bold uppercase tracking-wider text-xs">RK Custom Series</span>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- Product Images -->
+                <div>
+                    <div class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 mb-4 aspect-square relative shadow-inner flex items-center justify-center group">
+                        <span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 uppercase tracking-widest rounded-sm z-10 shadow-md">Sale</span>
+                        <img id="main-product-image" src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500" alt="Guitar">
+                        <button class="absolute top-4 right-4 bg-white p-2 rounded-full shadow hover:text-primary transition-colors z-10"><i data-lucide="heart" class="w-5 h-5"></i></button>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="bg-gray-100 rounded-sm border-2 border-primary overflow-hidden aspect-square cursor-pointer hover:border-primary transition-colors" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-100 rounded-sm border border-gray-200 overflow-hidden aspect-square cursor-pointer hover:border-primary transition-colors" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1550291652-6ea9114a47b1?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-100 rounded-sm border border-gray-200 overflow-hidden aspect-square cursor-pointer hover:border-primary transition-colors" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-100 rounded-sm border border-gray-200 overflow-hidden aspect-square cursor-pointer hover:border-primary transition-colors" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 block">Brand: RK Custom</span>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 uppercase tracking-tight mb-3">RK Custom Series Dreadnought</h1>
+                    
+                    <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-gray-200">
+                        <div class="flex text-primary">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <span class="text-sm text-gray-500 font-medium hover:text-primary cursor-pointer transition-colors">(12 Reviews)</span>
+                        <span class="text-gray-300 hidden sm:inline">|</span>
+                        <span class="text-sm text-green-600 font-bold flex items-center hidden sm:flex"><i data-lucide="check" class="w-4 h-4 mr-1"></i> In Stock</span>
+                    </div>
+                    
+                    <div class="mb-6 flex items-end space-x-4">
+                        <span class="text-4xl font-extrabold text-primary">Rs. 45,000</span>
+                        <span class="text-xl text-gray-400 line-through mb-1 font-medium">Rs. 50,000</span>
+                    </div>
+
+                    <p class="text-gray-600 mb-8 leading-relaxed text-base md:text-lg">
+                        The RK Custom Series Dreadnought delivers massive volume and profound bass, thanks to its carefully selected solid Sitka spruce top and mahogany back and sides. Perfect for both aggressive strumming and delicate fingerpicking in the studio or on stage.
+                    </p>
+
+                    <!-- Add to cart area -->
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
+                        <div class="flex space-x-4">
+                            <div class="w-28 flex-shrink-0">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 block">Quantity</label>
+                                <div class="flex border border-gray-300 rounded-sm bg-white overflow-hidden h-12">
+                                    <button onclick="updateQty(this, -1)" class="w-10 flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary transition-colors text-xl font-bold">-</button>
+                                    <input type="text" value="1" class="w-full text-center focus:outline-none font-bold text-lg p-0 border-0 pointer-events-none">
+                                    <button onclick="updateQty(this, 1)" class="w-10 flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary transition-colors text-xl font-bold">+</button>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <label class="text-xs font-bold uppercase tracking-wider text-transparent mb-2 block select-none hidden sm:block">Action</label>
+                                <button onclick="showToast('RK Custom Series Dreadnought added to cart!');" class="w-full h-12 mt-6 sm:mt-0 bg-primary text-white font-bold uppercase tracking-widest rounded-sm hover:bg-primaryHover transition-colors flex items-center justify-center shadow-lg shadow-primary/30 group">
+                                    <i data-lucide="shopping-cart" class="w-5 h-5 mr-3 group-hover:scale-110 transition-transform"></i> Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-gray-600 space-y-3 font-medium bg-white p-4 rounded border border-gray-100 shadow-sm">
+                        <p class="flex items-center"><i data-lucide="tag" class="w-4 h-4 mr-3 text-gray-400"></i> <strong class="text-gray-900 uppercase w-24">SKU:</strong> RK-AC-DRD-01</p>
+                        <p class="flex items-center"><i data-lucide="folder" class="w-4 h-4 mr-3 text-gray-400"></i> <strong class="text-gray-900 uppercase w-24">Category:</strong> <a href="#" class="text-primary hover:underline ml-1">Acoustic Guitars</a></p>
+                        <p class="flex items-center"><i data-lucide="hash" class="w-4 h-4 mr-3 text-gray-400"></i> <strong class="text-gray-900 uppercase w-24">Tags:</strong> Dreadnought, Solid Top, Professional</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description & Review Tabs -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden mb-16 shadow-sm">
+                <div class="bg-gray-50 flex border-b border-gray-200 overflow-x-auto hide-scrollbar">
+                    <button id="btn-tab-desc" onclick="switchProductTab('desc')" class="tab-btn active px-6 md:px-8 py-5 font-bold text-primary uppercase tracking-widest border-b-2 border-primary whitespace-nowrap bg-white text-xs md:text-sm">Description</button>
+                    <button id="btn-tab-specs" onclick="switchProductTab('specs')" class="tab-btn px-6 md:px-8 py-5 font-bold text-gray-500 uppercase tracking-widest border-b-2 border-transparent hover:text-gray-900 transition-colors whitespace-nowrap text-xs md:text-sm">Specifications</button>
+                    <button id="btn-tab-reviews" onclick="switchProductTab('reviews')" class="tab-btn px-6 md:px-8 py-5 font-bold text-gray-500 uppercase tracking-widest border-b-2 border-transparent hover:text-gray-900 transition-colors whitespace-nowrap text-xs md:text-sm">Reviews (12)</button>
+                </div>
+                
+                <!-- Content: Description -->
+                <div id="content-tab-desc" class="tab-content active p-6 md:p-12 bg-white text-gray-600 leading-relaxed text-base md:text-lg">
+                    <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Built for the Stage</h3>
+                    <p class="mb-6">Designed for the working musician, the RK Custom Series Dreadnought is built to project. We hand-select the tonewoods to ensure maximum resonance and structural stability against Kathmandu's varying humidity. The scalloped X-bracing allows the solid spruce top to vibrate freely, resulting in a rich, complex tone that improves with age.</p>
+                    <ul class="list-disc pl-6 space-y-3 font-medium text-gray-700">
+                        <li>Solid Sitka Spruce top for punchy articulation and headroom.</li>
+                        <li>Mahogany back and sides for warm, balanced overtones.</li>
+                        <li>Satin-finished mahogany neck with a comfortable 'C' profile.</li>
+                        <li>Rosewood fretboard with custom RK pearl inlays.</li>
+                        <li>Genuine Bone nut and saddle for enhanced sustain.</li>
+                        <li>Die-cast high-ratio 18:1 tuning machines for precise tuning.</li>
+                    </ul>
+                </div>
+
+                <!-- Content: Specifications -->
+                <div id="content-tab-specs" class="tab-content p-6 md:p-12 bg-white text-gray-600 leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Technical Specifications</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm md:text-base">
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Body Shape:</span> <span>Dreadnought</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Top Wood:</span> <span>Solid Sitka Spruce</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Back & Sides:</span> <span>Mahogany</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Neck Wood:</span> <span>Mahogany</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Fretboard:</span> <span>Rosewood</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Scale Length:</span> <span>25.5"</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Nut Width:</span> <span>1.69" (43mm)</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-2"><span class="font-bold text-gray-900">Electronics:</span> <span>None</span></div>
+                    </div>
+                </div>
+
+                <!-- Content: Reviews -->
+                <div id="content-tab-reviews" class="tab-content p-6 md:p-12 bg-white text-gray-600 leading-relaxed">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 border-b border-gray-100 pb-6">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-2">Customer Reviews</h3>
+                            <div class="flex items-center space-x-2 text-primary">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <span class="text-gray-600 font-bold ml-2">5.0 / 5.0 (12 Reviews)</span>
+                            </div>
+                        </div>
+                        <button class="mt-4 sm:mt-0 border-2 border-dark text-dark px-6 py-2 font-bold uppercase tracking-widest text-xs hover:bg-dark hover:text-white transition">Write a Review</button>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Review 1 -->
+                        <div class="bg-gray-50 p-6 rounded border border-gray-100">
+                            <div class="flex justify-between items-center mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-dark text-white rounded-full flex items-center justify-center font-bold">RK</div>
+                                    <div>
+                                        <h5 class="font-bold text-gray-900 text-sm">Rahul K.</h5>
+                                        <span class="text-xs text-gray-500">Verified Buyer - 2 days ago</span>
+                                    </div>
+                                </div>
+                                <div class="flex text-primary"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                            </div>
+                            <p class="text-sm">Absolutely stunning guitar for the price. The solid top makes a huge difference in the resonance. Also, the setup done by the store was perfect out of the box. Highly recommended!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="border-t border-gray-200 pt-16">
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+                    <h2 class="text-2xl font-extrabold text-gray-900 uppercase tracking-tight">Related Products</h2>
+                    <div class="flex space-x-2">
+                        <button class="w-10 h-10 border border-gray-300 rounded flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-colors"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+                        <button class="w-10 h-10 border border-gray-300 rounded flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-colors"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Related Item 1 -->
+                    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100 cursor-pointer" onclick="viewProduct(4)">
+                            <img src="https://images.unsplash.com/photo-1605020420620-20c943cc4669?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest mb-1 block">Acoustic</span>
+                            <h3 class="text-gray-900 font-bold text-base mb-2 hover:text-primary cursor-pointer leading-tight" onclick="viewProduct(4)">Solid Wood OM Acoustic</h3>
+                            <span class="font-extrabold text-primary">Rs. 38,000</span>
+                        </div>
+                    </div>
+                    <!-- Related Item 2 -->
+                    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100 cursor-pointer" onclick="viewProduct(6)">
+                            <img src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest mb-1 block">Accessories</span>
+                            <h3 class="text-gray-900 font-bold text-base mb-2 hover:text-primary cursor-pointer leading-tight" onclick="viewProduct(6)">Coated Phosphor Bronze Strings</h3>
+                            <span class="font-extrabold text-primary">Rs. 1,200</span>
+                        </div>
+                    </div>
+                    <!-- Related Item 3 -->
+                    <div class="hidden sm:flex bg-white rounded-lg border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex-col">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100 cursor-pointer" onclick="viewProduct(9)">
+                            <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest mb-1 block">Electric</span>
+                            <h3 class="text-gray-900 font-bold text-base mb-2 hover:text-primary cursor-pointer leading-tight" onclick="viewProduct(9)">Archtop Jazz Guitar</h3>
+                            <span class="font-extrabold text-primary">Rs. 85,000</span>
+                        </div>
+                    </div>
+                    <!-- Related Item 4 -->
+                    <div class="hidden lg:flex bg-white rounded-lg border border-gray-200 overflow-hidden group hover:shadow-xl transition-shadow duration-300 flex-col">
+                        <div class="relative aspect-square overflow-hidden bg-gray-100 cursor-pointer" onclick="viewProduct(8)">
+                            <img src="https://images.unsplash.com/photo-1621217086884-06d2c46fa270?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest mb-1 block">Parts</span>
+                            <h3 class="text-gray-900 font-bold text-base mb-2 hover:text-primary cursor-pointer leading-tight" onclick="viewProduct(8)">Locking Tuners Set (6 Inline)</h3>
+                            <span class="font-extrabold text-primary">Rs. 6,500</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- ========================================== -->
+    <!--                 PAGE: CART                 -->
+    <!-- ========================================== -->
+    <main id="page-cart" class="page-view bg-white py-8 md:py-12 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl md:text-3xl font-black text-darker uppercase tracking-tight mb-6 md:mb-8 border-b border-slate-200 pb-3 md:pb-4">Shopping Cart</h1>
+            
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-12">
+                <!-- Cart Items -->
+                <div class="w-full lg:w-2/3 border border-slate-200 rounded-lg overflow-hidden bg-white">
+                    <div class="hidden md:grid grid-cols-12 gap-4 bg-slate-50 p-4 border-b border-slate-200 font-bold text-xs uppercase tracking-wider text-slate-500">
+                        <div class="col-span-6">Product Details</div>
+                        <div class="col-span-2">Price</div>
+                        <div class="col-span-2 text-center">Quantity</div>
+                        <div class="col-span-2 text-right">Total</div>
+                    </div>
+                    
+                    <div id="cart-items-container" class="divide-y divide-slate-200">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Cart Totals -->
+                <div class="w-full lg:w-1/3">
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 md:p-6 lg:sticky lg:top-28">
+                        <h3 class="text-base md:text-lg font-bold text-darker mb-3 md:mb-4 border-b border-slate-200 pb-3 md:pb-4 uppercase tracking-wider">Order Summary</h3>
+                        
+                        <div class="flex justify-between mb-3 md:mb-4 text-slate-600 text-xs md:text-sm">
+                            <span>Subtotal (<span id="summary-count">0</span> items)</span>
+                            <span class="font-bold text-darker" id="summary-subtotal">NRs 0</span>
+                        </div>
+                        <div class="flex justify-between mb-5 md:mb-6 border-b border-slate-200 pb-5 md:pb-6 text-slate-600 text-xs md:text-sm">
+                            <span>Shipping</span>
+                            <div class="text-right">
+                                <span class="text-darker font-medium" id="summary-shipping">Calculated at checkout</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mb-6 md:mb-8 items-end">
+                            <span class="text-sm md:text-base font-bold uppercase tracking-wider text-darker">Total</span>
+                            <span class="text-xl md:text-2xl font-black text-primary" id="summary-total">NRs 0</span>
+                        </div>
+                        
+                        <button onclick="navigate('checkout');" class="w-full bg-darker text-white font-bold text-xs md:text-sm uppercase tracking-widest py-3.5 md:py-4 rounded hover:bg-slate-800 transition-colors shadow-lg cursor-pointer">
+                            Secure Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!--               PAGE: CHECKOUT               -->
+    <!-- ========================================== -->
+    <main id="page-checkout" class="page-view bg-white py-8 md:py-12 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl md:text-3xl font-black text-darker uppercase tracking-tight mb-6 md:mb-8 border-b border-slate-200 pb-3 md:pb-4">Checkout</h1>
+            
+            <form onsubmit="event.preventDefault(); showToast('Order placed successfully! Redirecting...'); setTimeout(()=>navigate('home'), 2000);" class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                <div class="w-full lg:w-2/3">
+                    <h3 class="text-lg md:text-xl font-bold text-darker mb-4 md:mb-6 uppercase tracking-tight">Billing details</h3>
+                    <div class="space-y-3 md:space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                            <div>
+                                <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">First name <span class="text-red-500">*</span></label>
+                                <input type="text" required class="w-full border border-slate-300 rounded p-2 md:p-2.5 focus:ring-1 focus:ring-primary focus:border-primary outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">Last name <span class="text-red-500">*</span></label>
+                                <input type="text" required class="w-full border border-slate-300 rounded p-2 md:p-2.5 focus:ring-1 focus:ring-primary focus:border-primary outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">Country / Region <span class="text-red-500">*</span></label>
+                            <select class="w-full border border-slate-300 rounded p-2 md:p-2.5 focus:ring-1 focus:ring-primary focus:border-primary outline-none bg-white">
+                                <option>Nepal</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">Street address <span class="text-red-500">*</span></label>
+                            <input type="text" placeholder="House number and street name" required class="w-full border border-slate-300 rounded p-2 md:p-2.5 mb-1 md:mb-2 outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">Town / City <span class="text-red-500">*</span></label>
+                            <input type="text" required class="w-full border border-slate-300 rounded p-2 md:p-2.5 outline-none focus:border-primary">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                            <div>
+                                <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">Phone <span class="text-red-500">*</span></label>
+                                <input type="tel" required class="w-full border border-slate-300 rounded p-2 md:p-2.5 outline-none focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">Email address <span class="text-red-500">*</span></label>
+                                <input type="email" required class="w-full border border-slate-300 rounded p-2 md:p-2.5 outline-none focus:border-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/3">
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 md:p-6 lg:sticky lg:top-28">
+                        <h3 class="text-lg md:text-xl font-bold text-darker mb-3 md:mb-4 uppercase tracking-tight">Your order</h3>
+                        
+                        <div class="bg-white p-3 md:p-4 rounded border border-slate-200 mb-4 md:mb-6 space-y-2 md:space-y-3">
+                            <label class="flex items-start space-x-2 md:space-x-3 cursor-pointer">
+                                <input type="radio" name="payment" checked class="mt-1 accent-primary">
+                                <div>
+                                    <span class="text-darker block text-xs md:text-sm font-bold">Cash on delivery</span>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-2 md:space-x-3 cursor-pointer">
+                                <input type="radio" name="payment" class="mt-1 accent-primary">
+                                <div>
+                                    <span class="text-darker block text-xs md:text-sm font-bold">eSewa / Khalti</span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white font-bold text-xs md:text-sm uppercase tracking-widest py-3 md:py-4 rounded hover:bg-primaryHover transition-colors shadow-lg cursor-pointer">
+                            Place order
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!--            PAGE: SIMPLE PAGES              -->
+    <!-- ========================================== -->
+    
+    <!-- ACCOUNT PAGE -->
+    <main id="page-account" class="page-view bg-slate-50 py-10 md:py-16 flex-1">
+        <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-lg shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-200">
+                <div class="p-6 md:p-8 text-center border-b border-slate-100">
+                    <h2 class="text-xl md:text-2xl font-black uppercase text-darker tracking-tight">Welcome Back</h2>
+                </div>
+                <div class="p-6 md:p-8">
+                    <form onsubmit="event.preventDefault(); showToast('Logged in successfully!'); navigate('home');" class="space-y-4 md:space-y-5">
+                        <div>
+                            <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 md:mb-2">Email Address</label>
+                            <input type="email" required class="w-full border border-slate-300 rounded p-2.5 md:p-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-xs md:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 md:mb-2">Password</label>
+                            <input type="password" required class="w-full border border-slate-300 rounded p-2.5 md:p-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-xs md:text-sm">
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white font-bold text-xs md:text-sm uppercase tracking-widest py-3 md:py-3.5 rounded hover:bg-primaryHover transition-colors mt-1 md:mt-2 shadow-lg cursor-pointer">
+                            Sign In
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ABOUT US PAGE -->
+    <main id="page-about" class="page-view bg-white py-8 md:py-12 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative rounded-xl overflow-hidden h-[200px] md:h-[450px] mb-10 md:mb-16 flex items-center justify-center shadow-2xl group">
+                <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                <div class="absolute inset-0 bg-darker/70"></div>
+                <div class="relative z-10 text-center text-white p-4 md:p-6">
+                    <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tight mb-2 md:mb-4">Our Story</h1>
+                    <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-4 md:mb-6 rounded-full"></div>
+                    <p class="text-sm md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">Guitar Shop Nepal is dedicated to elevating the music scene with authentic gear, top-tier brands, and expert service.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-10 md:mb-16">
+                <div>
+                    <h2 class="text-2xl md:text-4xl font-black text-darker uppercase tracking-tight mb-4 md:mb-6">
+                        The Guitar Shop Nepal Mission
+                    </h2>
+                    <div class="space-y-4 md:space-y-6 text-slate-600 leading-relaxed text-sm md:text-lg">
+                        <p>Established with a simple goal: to provide the local music community in Kathmandu with reliable, high-quality instruments and parts that were previously difficult to source.</p>
+                        <p>Located in Jyatha, Thamel, we are proud to be the official distributor for major brands like PRS Guitars, Fender, Cort, NUX, Blackstar, and Ernie Ball. Every item we stock is <strong class="text-darker">100% genuine</strong>.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 md:gap-4 h-full">
+                    <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded shadow-lg aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded shadow-lg aspect-[3/4] mt-6 md:mt-12">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CONTACT US PAGE -->
+    <main id="page-contact" class="page-view bg-white py-10 md:py-16 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 md:mb-16">
+                <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Contact Guitar Shop</h1>
+                <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-4 md:mb-6 rounded-full"></div>
+                <p class="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto">Have questions about a specific guitar, looking for a rare part, or need assistance? Our team is here to help.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 mb-10 md:mb-16">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl md:text-2xl font-black text-darker mb-4 md:mb-6 border-b border-slate-200 pb-3 md:pb-4 uppercase tracking-wide">Store Information</h3>
+                    <div class="space-y-6 md:space-y-8">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-full flex items-center justify-center text-primary mr-3 md:mr-4 flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5 md:w-6 md:h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-darker uppercase tracking-widest text-xs md:text-sm mb-1">Address</h4>
+                                <p class="text-sm md:text-base text-slate-600 leading-relaxed">Jyatha, Thamel<br>Kathmandu, Nepal</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-full flex items-center justify-center text-primary mr-3 md:mr-4 flex-shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5 md:w-6 md:h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-darker uppercase tracking-widest text-xs md:text-sm mb-1">Phone</h4>
+                                <p class="text-sm md:text-base text-slate-600 leading-relaxed">+977 1-4246061<br>+977 9841805379</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 rounded-full flex items-center justify-center text-primary mr-3 md:mr-4 flex-shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 md:w-6 md:h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-darker uppercase tracking-widest text-xs md:text-sm mb-1">Email</h4>
+                                <p class="text-sm md:text-base text-slate-600 leading-relaxed">info@guitarshopnepal.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white p-6 md:p-10 rounded-lg border border-slate-200 shadow-xl shadow-slate-200/50">
+                    <h3 class="text-xl md:text-2xl font-black text-darker mb-4 md:mb-6 border-b border-slate-100 pb-3 md:pb-4 uppercase tracking-wide">Send us a Message</h3>
+                    <form class="space-y-4 md:space-y-5" onsubmit="event.preventDefault(); showToast('Message sent successfully!'); this.reset();">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                            <div>
+                                <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 md:mb-2">First Name <span class="text-primary">*</span></label>
+                                <input type="text" required class="w-full border border-slate-300 rounded p-2.5 md:p-3 focus:ring-1 focus:ring-primary outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 md:mb-2">Last Name</label>
+                                <input type="text" class="w-full border border-slate-300 rounded p-2.5 md:p-3 focus:ring-1 focus:ring-primary outline-none text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 md:mb-2">Email Address <span class="text-primary">*</span></label>
+                            <input type="email" required class="w-full border border-slate-300 rounded p-2.5 md:p-3 focus:ring-1 focus:ring-primary outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 md:mb-2">Message <span class="text-primary">*</span></label>
+                            <textarea rows="4" md:rows="5" required class="w-full border border-slate-300 rounded p-2.5 md:p-3 focus:ring-1 focus:ring-primary outline-none text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-darker text-white font-bold text-xs md:text-sm uppercase tracking-widest py-3 md:py-4 rounded hover:bg-slate-800 transition-colors shadow-lg cursor-pointer">
+                            Submit Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Map Area -->
+            <div class="w-full h-64 md:h-96 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 relative mt-6 md:mt-8">
+                <div class="absolute inset-0 flex items-center justify-center text-slate-400 font-bold text-xs md:text-sm uppercase tracking-widest flex-col">
+                    <i data-lucide="map" class="w-8 h-8 md:w-12 md:h-12 mb-3 md:mb-4 opacity-50"></i>
+                    Interactive Google Map (Jyatha, Thamel)
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ PAGE -->
+    <main id="page-faq" class="page-view bg-white py-10 md:py-16 flex-1">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 md:mb-16">
+                <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Frequently Asked Questions</h1>
+                <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-4 md:mb-6 rounded-full"></div>
+            </div>
+            <div class="space-y-3 md:space-y-4">
+                <div class="faq-item border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+                    <button class="w-full text-left p-4 md:p-5 flex justify-between items-center text-sm md:text-base font-bold text-darker hover:text-primary transition-colors focus:outline-none cursor-pointer" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do you offer shipping outside Kathmandu valley?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 md:w-5 md:h-5 faq-icon transition-transform"></i>
+                    </button>
+                    <div class="faq-answer px-4 md:px-5 pb-4 md:pb-5 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-200 bg-white">
+                        Yes, we ship all over Nepal.
+                    </div>
+                </div>
+                <div class="faq-item border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+                    <button class="w-full text-left p-4 md:p-5 flex justify-between items-center text-sm md:text-base font-bold text-darker hover:text-primary transition-colors focus:outline-none cursor-pointer" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Are all your guitars authentically branded?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 md:w-5 md:h-5 faq-icon transition-transform"></i>
+                    </button>
+                    <div class="faq-answer px-4 md:px-5 pb-4 md:pb-5 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-200 bg-white">
+                        Absolutely. We are an authorized dealer for major brands like Fender, PRS, Cort, NUX, and Blackstar. We guarantee 100% genuine products.
+                    </div>
+                </div>
+                <div class="faq-item border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+                    <button class="w-full text-left p-4 md:p-5 flex justify-between items-center text-sm md:text-base font-bold text-darker hover:text-primary transition-colors focus:outline-none cursor-pointer" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do guitars come fully setup before delivery?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 md:w-5 md:h-5 faq-icon transition-transform"></i>
+                    </button>
+                    <div class="faq-answer px-4 md:px-5 pb-4 md:pb-5 text-slate-600 text-xs md:text-sm leading-relaxed border-t border-slate-200 bg-white">
+                        Yes! Every guitar purchased from us undergoes a thorough inspection and professional setup by our in-house luthiers.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- BRANDS PAGE -->
+    <main id="page-brands" class="page-view bg-white py-10 md:py-16 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Authorized Brands</h1>
+            <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-4 md:mb-6 rounded-full"></div>
+            <p class="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto mb-10 md:mb-16">We partner with the world's leading manufacturers to bring genuine gear to Nepal.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <div onclick="navigate('shop', {brand: 'Fender'})" class="border border-slate-200 rounded-lg p-6 md:p-8 flex flex-col items-center justify-center h-32 md:h-48 cursor-pointer group hover:border-primary hover:shadow-lg transition-all bg-slate-50 hover:bg-white">
+                    <span class="text-xl md:text-4xl font-extrabold font-serif text-slate-400 group-hover:text-darker transition-colors mb-2 md:mb-4">FENDER</span>
+                </div>
+                <div onclick="navigate('shop', {brand: 'PRS Guitars'})" class="border border-slate-200 rounded-lg p-6 md:p-8 flex flex-col items-center justify-center h-32 md:h-48 cursor-pointer group hover:border-primary hover:shadow-lg transition-all bg-slate-50 hover:bg-white">
+                    <span class="text-xl md:text-4xl font-extrabold font-serif italic text-slate-400 group-hover:text-darker transition-colors mb-2 md:mb-4">PRS Guitars</span>
+                </div>
+                <div onclick="navigate('shop', {brand: 'Cort'})" class="border border-slate-200 rounded-lg p-6 md:p-8 flex flex-col items-center justify-center h-32 md:h-48 cursor-pointer group hover:border-primary hover:shadow-lg transition-all bg-slate-50 hover:bg-white">
+                    <span class="text-xl md:text-4xl font-black tracking-tighter text-slate-400 group-hover:text-darker transition-colors mb-2 md:mb-4">CORT</span>
+                </div>
+                <div onclick="navigate('shop', {brand: 'Blackstar'})" class="border border-slate-200 rounded-lg p-6 md:p-8 flex flex-col items-center justify-center h-32 md:h-48 cursor-pointer group hover:border-primary hover:shadow-lg transition-all bg-slate-50 hover:bg-white">
+                    <span class="text-lg md:text-3xl font-black text-slate-400 group-hover:text-darker transition-colors mb-2 md:mb-4">Blackstar</span>
+                </div>
+                <div onclick="navigate('shop', {brand: 'NUX'})" class="border border-slate-200 rounded-lg p-6 md:p-8 flex flex-col items-center justify-center h-32 md:h-48 cursor-pointer group hover:border-primary hover:shadow-lg transition-all bg-slate-50 hover:bg-white">
+                    <span class="text-xl md:text-4xl font-black tracking-widest text-slate-400 group-hover:text-darker transition-colors mb-2 md:mb-4">NUX</span>
+                </div>
+                <div onclick="navigate('shop', {brand: 'Ernie Ball'})" class="border border-slate-200 rounded-lg p-6 md:p-8 flex flex-col items-center justify-center h-32 md:h-48 cursor-pointer group hover:border-primary hover:shadow-lg transition-all bg-slate-50 hover:bg-white">
+                    <span class="text-lg md:text-3xl font-black tracking-widest text-slate-400 group-hover:text-darker transition-colors mb-2 md:mb-4">Ernie Ball</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ARTISTS PAGE -->
+    <main id="page-endorsement" class="page-view bg-white py-10 md:py-16 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 md:mb-16">
+                <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Our Artists</h1>
+                <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-4 md:mb-6 rounded-full"></div>
+                <p class="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto">Professionals who trust Guitar Shop Nepal for their tone on stage and in the studio.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
+                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=800&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all">
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Bipul C.</h3>
+                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Acoustic Legend</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a1a2a5fa50bc?q=80&w=800&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all">
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Sabin R.</h3>
+                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Rock Vocalist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SINGLE ENDORSEMENT PAGE -->
+    <main id="page-endorsement-single" class="page-view bg-white py-8 md:py-12 flex-1">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 border-b border-slate-200 pb-3 md:pb-4 flex items-center space-x-2 font-medium">
+                <a href="javascript:void(0)" onclick="navigate('home')" class="hover:text-primary cursor-pointer"><i data-lucide="home" class="w-3 h-3 md:w-4 md:h-4"></i></a> 
+                <span>/</span> 
+                <a href="javascript:void(0)" onclick="navigate('endorsement')" class="hover:text-primary uppercase tracking-wider text-[10px] md:text-xs cursor-pointer">Artists</a> 
+                <span>/</span> 
+                <span class="text-darker uppercase tracking-wider text-[10px] md:text-xs font-bold">Bipul Chettri</span>
+            </nav>
+            <header class="text-center mb-8 md:mb-10">
+                <span class="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-2 md:mb-3 block">Acoustic Folk Legend</span>
+                <h1 class="text-3xl md:text-5xl font-black text-darker tracking-tight leading-tight mb-4 md:mb-6 uppercase">Bipul Chettri</h1>
+            </header>
+            <div class="rounded-lg overflow-hidden aspect-video mb-8 md:mb-10 border border-slate-100 shadow-lg relative">
+                <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
+            </div>
+            <div class="prose max-w-none text-slate-600 leading-relaxed text-sm md:text-base">
+                <h3 class="text-xl md:text-2xl font-black text-darker mb-3 md:mb-4 uppercase tracking-tight">About The Artist</h3>
+                <p>Bipul Chettri relies on the pristine setup provided by Guitar Shop Nepal for his acoustic tours.</p>
+                <button onclick="navigate('endorsement')" class="mt-4 md:mt-6 text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors flex items-center cursor-pointer">
+                    <i data-lucide="arrow-left" class="w-3 h-3 md:w-4 md:h-4 mr-2"></i> Back to Artists
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- BLOG PAGE -->
+    <main id="page-blog" class="page-view bg-slate-50 py-10 md:py-16 flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 md:mb-12">
+                <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Tone Journal</h1>
+                <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto rounded-full mb-8 md:mb-12"></div>
+            </div>
+            <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- SINGLE BLOG PAGE -->
+    <main id="page-blog-single" class="page-view bg-white py-8 md:py-12 flex-1">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 border-b border-slate-200 pb-3 md:pb-4 flex items-center space-x-2 font-medium">
+                <a href="javascript:void(0)" onclick="navigate('home')" class="hover:text-primary cursor-pointer"><i data-lucide="home" class="w-3 h-3 md:w-4 md:h-4"></i></a> 
+                <span>/</span> 
+                <a href="javascript:void(0)" onclick="navigate('blog')" class="hover:text-primary uppercase tracking-wider text-[10px] md:text-xs cursor-pointer">Blog</a> 
+                <span>/</span> 
+                <span class="text-darker uppercase tracking-wider text-[10px] md:text-xs font-bold truncate max-w-[150px] sm:max-w-none">Choosing Your First Acoustic</span>
+            </nav>
+            <header class="text-center mb-8 md:mb-10">
+                <span class="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-2 md:mb-3 block">Guides & Advice</span>
+                <h1 class="text-2xl md:text-5xl font-black text-darker tracking-tight leading-tight mb-4 md:mb-6">Choosing Your First Acoustic Guitar</h1>
+            </header>
+            <div class="rounded-lg overflow-hidden aspect-[16/9] mb-8 md:mb-12 shadow-lg border border-slate-100">
+                <img src="https://images.unsplash.com/photo-1520166012956-add9ba0ee12b?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
+            </div>
+            <article class="prose prose-sm md:prose-lg max-w-none text-slate-600 space-y-4 md:space-y-6">
+                <p class="lead text-base md:text-xl text-darker font-medium">Starting your musical journey is exciting, but walking into the shop and seeing walls of instruments can be overwhelming.</p>
+                <h3 class="text-xl md:text-2xl font-bold text-darker mt-8 md:mt-10 mb-3 md:mb-4 uppercase tracking-tight">1. Understand Body Shapes</h3>
+                <p>The size and shape of an acoustic guitar dramatically affect both its sound and how comfortable it is to play.</p>
+                <ul>
+                    <li><strong class="text-darker">Dreadnought:</strong> Perfect for strumming and volume.</li>
+                    <li><strong class="text-darker">Concert / OM:</strong> Perfect for fingerpicking.</li>
+                </ul>
+            </article>
+            <div class="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-slate-200">
+                <button onclick="navigate('blog')" class="text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors flex items-center cursor-pointer">
+                    <i data-lucide="arrow-left" class="w-3 h-3 md:w-4 md:h-4 mr-2"></i> Back to all posts
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!--                 FOOTER                     -->
+    <!-- ========================================== -->
+    <footer class="bg-darker text-slate-300 pt-10 md:pt-16 pb-6 md:pb-8 border-t-4 border-primary mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12 border-b border-slate-800 pb-8 md:pb-12">
+                <div>
+                    <span class="font-black text-xl md:text-2xl tracking-tighter text-white uppercase block mb-3 md:mb-4 cursor-pointer flex items-center leading-none" onclick="navigate('home')">
+                                            <img src="./images/logo.jpg" alt="Deep Music Logo" class="h-20 md:h-20 w-20 object-cover hover:opacity-80 transition-opacity">
+
+                    </span>
+                    <p class="text-slate-400 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 font-medium">
+                        Guitar Shop Nepal - Authorized dealers of genuine musical instruments and pro audio equipment.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 text-white">Categories</h4>
+                    <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-slate-400 font-medium">
+                        <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Accessories'})" class="hover:text-primary transition-colors cursor-pointer">Accessories</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Guitar Parts'})" class="hover:text-primary transition-colors cursor-pointer">Guitar Parts</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Guitars'})" class="hover:text-primary transition-colors cursor-pointer">Guitars</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Amps'})" class="hover:text-primary transition-colors cursor-pointer">Amplifiers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 text-white">Information</h4>
+                    <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-slate-400 font-medium">
+                        <li><a href="javascript:void(0)" onclick="navigate('about')" class="hover:text-primary transition-colors cursor-pointer">About Us</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('contact')" class="hover:text-primary transition-colors cursor-pointer">Contact</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('faq')" class="hover:text-primary transition-colors cursor-pointer">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 text-white">Store Address</h4>
+                    <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-slate-400 font-medium">
+                        <li class="flex items-start"><i data-lucide="map-pin" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 mt-0.5 text-primary"></i> Jyatha, Thamel, Kathmandu</li>
+                        <li class="flex items-center"><i data-lucide="phone" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 text-primary"></i> +977 1-4246061</li>
+                        <li class="flex items-center"><i data-lucide="mail" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 text-primary"></i> info@guitarshopnepal.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-[10px] md:text-xs text-slate-600 font-bold uppercase tracking-wider text-center">
+                <p>&copy; 2026 Guitar Shop Nepal (Deep Music Theme). All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!--                 JAVASCRIPT                 -->
+    <!-- ========================================== -->
+    <script>
+        // --- INVENTORY DATA EXTRACTED FROM GUITAR SHOP NEPAL ---
+        const products = [
+            // Guitars (Electric & Acoustic)
+            { id: 1, name: "PRS SE Custom 24", brand: "PRS Guitars", price: 125000, oldPrice: 135000, image: "https://images.unsplash.com/photo-1550291652-6ea9114a47b1?q=80&w=500&auto=format&fit=crop", category: "Guitars", subCategory: "Electric Guitars", stock: true, rating: 5, isNew: true, isSale: true, isBest: true, desc: "The SE Custom 24 brings the original PRS design platform to the high-quality, more affordable SE line up of instruments." },
+            { id: 2, name: "Fender Player Stratocaster", brand: "Fender", price: 110000, oldPrice: 125000, image: "https://images.unsplash.com/photo-1621217086884-06d2c46fa270?q=80&w=500&auto=format&fit=crop", category: "Guitars", subCategory: "Electric Guitars", stock: true, rating: 5, isNew: false, isSale: true, isBest: true, desc: "The inspiring sound of a Stratocaster is one of the foundations of Fender." },
+            { id: 3, name: "Cort Earth 70 Acoustic Guitar", brand: "Cort", price: 24000, oldPrice: null, image: "https://images.unsplash.com/photo-1605020420620-20c943cc4669?q=80&w=500&auto=format&fit=crop", category: "Guitars", subCategory: "Acoustic Guitars", stock: true, rating: 4, isNew: false, isSale: false, isBest: true, desc: "The Earth 70 is a solid spruce top acoustic guitar that delivers a massive tone and classic dreadnought sound." },
+            { id: 4, name: "Cort AD810 Acoustic Guitar", brand: "Cort", price: 18000, oldPrice: null, image: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=500&auto=format&fit=crop", category: "Guitars", subCategory: "Acoustic Guitars", stock: true, rating: 5, isNew: true, isSale: false, isBest: true, desc: "Standard series AD810 provides solid performance for beginners." },
+
+            // Amps
+            { id: 5, name: "Blackstar ID:Core 10 V3", brand: "Blackstar", price: 22000, oldPrice: null, image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop", category: "Amps", subCategory: "Combo Amps", stock: true, rating: 5, isNew: true, isSale: false, isBest: true, desc: "10W programmable combo amp with Super Wide Stereo and built-in effects." },
+            { id: 6, name: "Boss Katana-50 MkII", brand: "Boss", price: 42000, oldPrice: 48000, image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop", category: "Amps", subCategory: "Combo Amps", stock: true, rating: 5, isNew: false, isSale: true, isBest: true, desc: "Katana MkII takes the acclaimed Katana guitar amp series to the next level." },
+
+            // Pedals
+            { id: 7, name: "NUX MG-300 Multi-Effects", brand: "NUX", price: 20000, oldPrice: 22000, image: "https://images.unsplash.com/photo-1541680670548-2234f9a0b1bc?q=80&w=500&auto=format&fit=crop", category: "Pedals & Effects", subCategory: "Multi-Effects", stock: true, rating: 5, isNew: true, isSale: true, isBest: true, desc: "The best value compact modeler on the market with TSAC-HD amp modeling algorithm." },
+            { id: 8, name: "Boss DS-1 Distortion", brand: "Boss", price: 8500, oldPrice: null, image: "https://images.unsplash.com/photo-1541680670548-2234f9a0b1bc?q=80&w=500&auto=format&fit=crop", category: "Pedals & Effects", subCategory: "Distortion", stock: true, rating: 4, isNew: false, isSale: false, isBest: true, desc: "The classic BOSS distortion pedal used by pros everywhere." },
+
+            // Accessories & Parts
+            { id: 9, name: "Ernie Ball Regular Slinky 10-46", brand: "Ernie Ball", price: 1200, oldPrice: null, image: "https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?q=80&w=500&auto=format&fit=crop", category: "Accessories", subCategory: "Strings", stock: true, rating: 5, isNew: false, isSale: false, isBest: true, desc: "Played by legends around the world including Slash, Jimmy Page, Metallica, Eric Clapton, and more." },
+            { id: 10, name: "D'Addario XS Acoustic Strings", brand: "D'Addario", price: 2500, oldPrice: null, image: "https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?q=80&w=500&auto=format&fit=crop", category: "Accessories", subCategory: "Strings", stock: true, rating: 5, isNew: true, isSale: false, isBest: false, desc: "The most innovative coated string ever created." },
+            { id: 11, name: "Dunlop Tortex Standard Picks", brand: "Dunlop", price: 150, oldPrice: null, image: "https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?q=80&w=500&auto=format&fit=crop", category: "Accessories", subCategory: "Picks", stock: true, rating: 4, isNew: false, isSale: false, isBest: false, desc: "Tortex Picks are highly durable with great memory and just the right amount of flexibility." },
+            { id: 12, name: "Focusrite Scarlett Solo 3rd Gen", brand: "Focusrite", price: 25000, oldPrice: 28000, image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=500&auto=format&fit=crop", category: "Accessories", subCategory: "Studio Gear", stock: true, rating: 5, isNew: false, isSale: true, isBest: true, desc: "The simplest model in the range, third-generation Scarlett Solo provides singer-songwriters with a reassuringly easy recording process." }
+        ];
+
+        // --- BLOG DATA ---
+        const articles = [
+            { img: "https://images.unsplash.com/photo-1520166012956-add9ba0ee12b", tag: "Guides", title: "Choosing Your First Acoustic Guitar", desc: "A comprehensive guide to tonewoods, body shapes, and budgets for beginners.", date: "May 15, 2026" },
+            { img: "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4", tag: "News", title: "New PRS SE Guitars Series Arrives", desc: "We are thrilled to announce the arrival of the highly anticipated SE series.", date: "May 10, 2026" },
+            { img: "https://images.unsplash.com/photo-1549887552-cb1071d3e5ca", tag: "Maintenance", title: "How Humidity Affects Your Guitar", desc: "Protect your investment from the harsh monsoon changes.", date: "May 02, 2026" },
+            { img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4", tag: "Reviews", title: "Blackstar ID:Core V3: The Ultimate Combo?", desc: "We put the ID:Core through its paces to see if it lives up to the hype.", date: "April 28, 2026" },
+            { img: "https://images.unsplash.com/photo-1621217086884-06d2c46fa270", tag: "Guides", title: "Why Upgrade Your Tuning Pegs?", desc: "Tired of going out of tune? Locking tuners might be the best upgrade.", date: "April 15, 2026" },
+            { img: "https://images.unsplash.com/photo-1460036521480-5a7a72d31c4f", tag: "Artist Spotlight", title: "Local Legends: Interview with Kathmandu's Finest", desc: "We sit down with local guitar virtuoso to discuss their rig.", date: "April 05, 2026" }
+        ];
+
+        // Format Currency
+        const formatMoney = (amount) => "NRs " + amount.toLocaleString('en-IN');
+
+        // Extract dynamic filter lists
+        const categories = [...new Set(products.map(p => p.category))];
+        const subCategories = [...new Set(products.map(p => p.subCategory))];
+        const brands = [...new Set(products.map(p => p.brand))];
+
+        // --- GLOBAL STATE ---
+        let currentFilterCat = 'ALL';
+        let currentFilterSubCat = null;
+        let currentTopFilter = 'ALL'; 
+        let cart = [];
+        let currentProductViewId = null;
+
+        // Initialize Icons
+        lucide.createIcons();
+
+        // --- TOAST NOTIFICATION ---
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast z-50';
+            toast.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 md:w-5 md:h-5 text-primary"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            lucide.createIcons({root: toast});
+            setTimeout(() => toast.remove(), 3300);
+        }
+
+        // --- UI TOGGLES ---
+        function toggleMobileMenu() {
+            const mMenu = document.getElementById('mobile-menu');
+            const mBars = document.getElementById('menu-icon-bars');
+            const mClose = document.getElementById('menu-icon-close');
+            if (mMenu.classList.contains('hidden')) {
+                mMenu.classList.remove('hidden'); mBars.classList.add('hidden'); mClose.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                closeMobileMenu();
+            }
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+            document.getElementById('menu-icon-bars').classList.remove('hidden');
+            document.getElementById('menu-icon-close').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // Product Detail Tabs
+        function switchProductTab(tabName) {
+            document.querySelectorAll('#page-product .tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-primary', 'text-primary', 'bg-white');
+                btn.classList.add('border-transparent', 'text-slate-500');
+            });
+            document.querySelectorAll('#page-product .tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('active');
+            });
+
+            const activeBtn = document.getElementById('btn-tab-' + tabName);
+            const activeContent = document.getElementById('content-tab-' + tabName);
+            
+            if(activeBtn) {
+                activeBtn.classList.remove('border-transparent', 'text-slate-500');
+                activeBtn.classList.add('active', 'border-primary', 'text-primary', 'bg-white');
+            }
+            if(activeContent) {
+                activeContent.classList.remove('hidden');
+                activeContent.classList.add('active');
+            }
+        }
+
+        // --- NAVIGATION & ROUTING ---
+        function navigate(pageId, queryParams = {}) {
+            // Hide all pages
+            document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) targetPage.classList.add('active');
+            else document.getElementById('page-home').classList.add('active'); 
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Apply Query Params for Shop
+            if (pageId === 'shop') {
+                clearFilters(false);
+                if(queryParams.cat) {
+                    currentFilterCat = queryParams.cat;
+                    updateSidebarUI();
+                }
+                if(queryParams.brand) {
+                    const cb = document.querySelector(`.filter-brand[value="${queryParams.brand}"]`);
+                    if(cb) cb.checked = true;
+                }
+                if(queryParams.sale) setTopFilter('SALE', document.querySelectorAll('.top-filter-btn')[2]);
+                applyFilters();
+            }
+
+            // Product detail
+            if (pageId === 'product' && queryParams.id) {
+                renderProductPage(queryParams.id);
+            }
+        }
+
+        // --- CART LOGIC ---
+        function addToCart(productId, qtyToAdd = 1) {
+            const product = products.find(p => p.id === productId);
+            if(!product) return;
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.qty += parseInt(qtyToAdd);
+            } else {
+                cart.push({ ...product, qty: parseInt(qtyToAdd) });
+            }
+            updateCartBadges();
+            renderCartPage();
+            showToast(`${product.name} added to cart!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartBadges();
+            renderCartPage();
+            showToast('Item removed from cart.');
+        }
+
+        function changeCartItemQty(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if(item) {
+                item.qty += change;
+                if(item.qty < 1) item.qty = 1;
+                updateCartBadges();
+                renderCartPage();
+            }
+        }
+
+        function updateCartBadges() {
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.querySelectorAll('.cart-badge').forEach(b => {
+                b.innerText = totalItems;
+                b.classList.toggle('hidden', totalItems === 0);
+                if(totalItems > 0) b.classList.remove('hidden');
+            });
+        }
+
+        function renderCartPage() {
+            const container = document.getElementById('cart-items-container');
+            const summarySubtotal = document.getElementById('summary-subtotal');
+            const summaryTotal = document.getElementById('summary-total');
+            const summaryCount = document.getElementById('summary-count');
+            
+            if(!container) return;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 md:p-12 text-center">
+                        <i data-lucide="shopping-cart" class="w-12 h-12 md:w-16 md:h-16 text-slate-200 mx-auto mb-3 md:mb-4"></i>
+                        <h3 class="text-lg md:text-xl font-bold text-darker mb-2">Your cart is empty</h3>
+                        <button onclick="navigate('shop')" class="mt-3 md:mt-4 bg-primary text-white px-4 md:px-6 py-2 md:py-2.5 rounded font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-primaryHover transition-colors cursor-pointer">Go to Shop</button>
+                    </div>
+                `;
+                summarySubtotal.innerText = "NRs 0";
+                summaryTotal.innerText = "NRs 0";
+                summaryCount.innerText = "0";
+                lucide.createIcons();
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            let count = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                count += item.qty;
+
+                html += `
+                    <div class="flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 md:items-center p-3 md:p-4 group relative">
+                        <div class="col-span-6 flex items-center gap-3 md:gap-4">
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-slate-50 rounded border border-slate-100 overflow-hidden flex-shrink-0 cursor-pointer p-1.5 md:p-2 flex items-center justify-center" onclick="navigate('product', {id: ${item.id}})">
+                                <img src="${item.image}" class="max-h-full object-contain mix-blend-multiply">
+                            </div>
+                            <div class="pr-6 md:pr-0">
+                                <span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">${item.brand}</span>
+                                <a href="javascript:void(0)" onclick="navigate('product', {id: ${item.id}})" class="font-bold text-darker hover:text-primary transition-colors text-xs md:text-sm leading-tight block mt-0.5">${item.name}</a>
+                            </div>
+                        </div>
+                        <div class="col-span-2 flex justify-between md:block text-slate-600 font-medium text-xs md:text-sm">
+                            <span class="md:hidden font-bold uppercase text-[10px] text-slate-400">Price:</span> 
+                            <span>${formatMoney(item.price)}</span>
+                        </div>
+                        <div class="col-span-2 flex justify-between md:justify-center items-center">
+                            <span class="md:hidden font-bold uppercase text-[10px] text-slate-400">Qty:</span>
+                            <div class="flex border border-slate-300 rounded bg-white overflow-hidden w-20 md:w-24">
+                                <button onclick="changeCartItemQty(${item.id}, -1)" class="w-6 md:w-8 flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-colors font-bold cursor-pointer text-sm">-</button>
+                                <input type="text" value="${item.qty}" readonly class="w-8 md:w-8 text-center font-bold text-xs md:text-sm border-0 p-0 pointer-events-none">
+                                <button onclick="changeCartItemQty(${item.id}, 1)" class="w-6 md:w-8 flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-colors font-bold cursor-pointer text-sm">+</button>
+                            </div>
+                        </div>
+                        <div class="col-span-2 flex justify-between md:justify-end items-center">
+                            <span class="md:hidden font-bold uppercase text-[10px] text-slate-400">Total:</span> 
+                            <div class="flex items-center gap-2 md:gap-4">
+                                <span class="text-darker font-black text-sm md:text-base">${formatMoney(itemTotal)}</span>
+                                <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-primary transition-colors bg-slate-50 hover:bg-red-50 p-1 md:p-1.5 rounded absolute top-3 right-3 md:relative md:top-auto md:right-auto md:opacity-0 md:group-hover:opacity-100 cursor-pointer"><i data-lucide="trash-2" class="w-3.5 h-3.5 md:w-4 md:h-4"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            summarySubtotal.innerText = formatMoney(total);
+            summaryTotal.innerText = formatMoney(total);
+            summaryCount.innerText = count;
+            lucide.createIcons();
+        }
+
+        // --- PRODUCT RENDERING (CARDS) ---
+        function createProductCard(product, isCarouselItem = false) {
+            const stockHtml = !product.stock 
+                ? `<p class="text-[9px] md:text-[10px] text-red-500 font-bold uppercase tracking-widest mt-1">Out of Stock</p>` 
+                : `<p class="text-[9px] md:text-[10px] text-green-600 font-bold uppercase tracking-widest mt-1">In Stock</p>`;
+            
+            const stars = product.rating > 0 
+                ? `<div class="flex text-yellow-400 mb-1 mt-0.5 md:mt-1">` + `<i data-lucide="star" class="w-2.5 h-2.5 md:w-3 md:h-3 fill-current"></i>`.repeat(product.rating) + `</div>` 
+                : '<div class="h-4 md:h-5"></div>';
+
+            const badge = product.isSale ? `<span class="absolute top-2 left-2 bg-primary text-white text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 md:px-2 md:py-1 uppercase tracking-widest rounded z-10">Sale</span>` : '';
+            const oldPrice = product.oldPrice ? `<span class="text-[10px] md:text-xs text-slate-400 line-through ml-1.5 md:ml-2 font-medium">${formatMoney(product.oldPrice)}</span>` : '';
+
+            const sizingClasses = isCarouselItem ? 'min-w-[65%] sm:min-w-[40%] md:min-w-0 snap-start' : '';
+
+            return `
+                <div class="bg-white flex flex-col p-3 md:p-4 rounded-lg border border-slate-200 hover:border-slate-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group relative cursor-pointer ${sizingClasses}" onclick="navigate('product', {id: ${product.id}})">
+                    ${badge}
+                    <button onclick="event.stopPropagation(); addToCart(${product.id});" class="absolute top-2 right-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 bg-white text-darker hover:text-primary hover:scale-110 p-1.5 md:p-2 rounded-full shadow-md border border-slate-100 transition-all z-10 cursor-pointer" title="Add to Cart"><i data-lucide="shopping-cart" class="w-3.5 h-3.5 md:w-4 md:h-4"></i></button>
+                    
+                    <div class="aspect-square flex items-center justify-center mb-3 md:mb-4 overflow-hidden bg-slate-50 rounded p-3 md:p-4">
+                        <img src="${product.image}" class="max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    
+                    <span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">${product.brand}</span>
+                    <h3 class="text-[13px] md:text-sm font-bold text-darker mb-1 leading-snug group-hover:text-primary transition-colors line-clamp-2">${product.name}</h3>
+                    ${stars}
+                    <div class="mt-auto pt-1.5 md:pt-2 flex items-center flex-wrap">
+                        <span class="font-black text-primary text-[13px] md:text-sm">${formatMoney(product.price)}</span>
+                        ${oldPrice}
+                    </div>
+                    ${stockHtml}
+                </div>
+            `;
+        }
+
+        // --- FEATURED GEAR SECTION LOGIC ---
+        function renderFeatured(tab) {
+            const container = document.getElementById('home-featured-container');
+            if(!container) return;
+            
+            // UI Toggle
+            document.querySelectorAll('.feat-tab-btn').forEach(b => {
+                b.classList.remove('active', 'border-primary', 'text-primary');
+                b.classList.add('border-transparent', 'text-slate-400');
+            });
+            document.getElementById(`btn-feat-${tab}`).classList.add('active', 'border-primary', 'text-primary');
+            document.getElementById(`btn-feat-${tab}`).classList.remove('border-transparent', 'text-slate-400');
+
+            // Data filter
+            let filtered = [];
+            if (tab === 'new') filtered = products.filter(p => p.isNew);
+            if (tab === 'best') filtered = products.filter(p => p.isBest);
+            if (tab === 'sale') filtered = products.filter(p => p.isSale);
+            
+            // Fallback padding to guarantee EXACTLY 8 products for consistent layout
+            if (filtered.length < 8) {
+                const remainder = products.filter(p => !filtered.includes(p));
+                filtered = [...filtered, ...remainder.slice(0, 8 - filtered.length)];
+            }
+            
+            container.innerHTML = filtered.slice(0, 8).map(p => createProductCard(p, true)).join('');
+            lucide.createIcons();
+        }
+
+        // --- BLOG RENDERING LOGIC ---
+        function createBlogCard(article, isCarouselItem = false) {
+            const sizingClasses = isCarouselItem ? 'min-w-[85%] sm:min-w-[45%] md:min-w-0 snap-start flex-shrink-0' : '';
+
+            return `
+                <div class="bg-white flex flex-col rounded-lg overflow-hidden border border-slate-200 shadow-sm group cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all text-left ${sizingClasses}" onclick="navigate('blog-single')">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="${article.img}?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 md:p-8 flex flex-col flex-1">
+                        <span class="text-[10px] md:text-xs font-bold text-primary uppercase tracking-widest mb-2 md:mb-3 block">${article.tag}</span>
+                        <h3 class="font-bold text-lg md:text-xl text-darker mb-2 md:mb-3 group-hover:text-primary transition-colors leading-tight">${article.title}</h3>
+                        <p class="text-slate-600 text-xs md:text-sm mb-4 md:mb-6 line-clamp-3">${article.desc}</p>
+                        <div class="flex justify-between items-center border-t border-slate-100 pt-3 md:pt-4 mt-auto">
+                            <span class="text-[10px] md:text-xs text-slate-400 font-bold uppercase">${article.date}</span>
+                            <span class="text-[10px] md:text-xs font-bold text-darker flex items-center group-hover:text-primary transition-colors">Read <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderBlogs() {
+            const homeBlogGrid = document.getElementById('home-blog-grid');
+            const mainBlogGrid = document.getElementById('blog-grid');
+
+            if(homeBlogGrid) {
+                homeBlogGrid.innerHTML = articles.slice(0, 3).map((a, i) => createBlogCard({...a, index: i}, true)).join('');
+            }
+            if(mainBlogGrid) {
+                mainBlogGrid.innerHTML = articles.map((a, i) => createBlogCard({...a, index: i}, false)).join('');
+            }
+        }
+
+        // --- SINGLE PRODUCT PAGE LOGIC ---
+        function renderProductPage(productId) {
+            const product = products.find(p => p.id === parseInt(productId));
+            if(!product) { navigate('shop'); return; }
+            currentProductViewId = product.id;
+
+            document.getElementById('pd-breadcrumb-cat').innerText = product.category;
+            document.getElementById('pd-breadcrumb-name').innerText = product.name;
+            document.getElementById('pd-brand').innerText = product.brand;
+            document.getElementById('pd-name').innerText = product.name;
+            document.getElementById('pd-image').src = product.image;
+            document.getElementById('pd-price').innerText = formatMoney(product.price);
+            document.getElementById('pd-desc').innerText = product.desc;
+            document.getElementById('pd-qty').value = 1;
+
+            if(product.oldPrice) {
+                document.getElementById('pd-old-price').innerText = formatMoney(product.oldPrice);
+                document.getElementById('pd-old-price').classList.remove('hidden');
+                document.getElementById('pd-badge').classList.remove('hidden');
+            } else {
+                document.getElementById('pd-old-price').classList.add('hidden');
+                document.getElementById('pd-badge').classList.add('hidden');
+            }
+
+            const starsContainer = document.getElementById('pd-stars');
+            starsContainer.innerHTML = product.rating > 0 
+                ? `<i data-lucide="star" class="w-3.5 h-3.5 md:w-4 md:h-4 fill-current"></i>`.repeat(product.rating) + `<i data-lucide="star" class="w-3.5 h-3.5 md:w-4 md:h-4 text-slate-200"></i>`.repeat(5-product.rating)
+                : '';
+
+            // Add listener to Add button
+            const addBtn = document.getElementById('pd-add-btn');
+            addBtn.onclick = () => {
+                const qty = document.getElementById('pd-qty').value;
+                addToCart(product.id, qty);
+            };
+
+            // Related Products
+            const relatedGrid = document.getElementById('pd-related-grid');
+            let related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0,4);
+            if(related.length < 4) related = [...related, ...products.filter(p => p.id !== product.id && !related.includes(p)).slice(0, 4 - related.length)];
+
+            relatedGrid.innerHTML = related.map(p => createProductCard(p)).join('');
+
+            // Reset tabs to description
+            switchProductTab('desc');
+
+            lucide.createIcons();
+        }
+
+        function updateQtyInput(change) {
+            const input = document.getElementById('pd-qty');
+            let val = parseInt(input.value) || 1;
+            val += change;
+            if (val < 1) val = 1;
+            input.value = val;
+        }
+
+        // --- SHOP PAGE FILTERING & RENDERING ---
+        function initShopSidebar() {
+            // Categories
+            const catList = document.getElementById('sidebar-category-list');
+            if(catList) {
+                let html = '';
+                categories.forEach(cat => {
+                    const subCats = [...new Set(products.filter(p => p.category === cat).map(p => p.subCategory))];
+                    html += `
+                        <li class="cat-list-item" data-cat="${cat}">
+                            <div class="cursor-pointer flex justify-between items-center py-1.5 md:py-2 hover:text-primary transition-colors" onclick="toggleSidebarCategory(this); applyFilters(true, '${cat}')">
+                                <span class="uppercase tracking-wider text-[10px] md:text-xs font-bold">${cat}</span> 
+                                <span class="icon-toggle font-bold text-base md:text-lg leading-none">+</span>
+                            </div>
+                            <ul class="cat-list-sub pl-3 md:pl-4 space-y-1.5 md:space-y-2 mt-1 border-l-2 border-slate-100 ml-1 mb-2">
+                                ${subCats.map(sub => `<li class="subcat-item cursor-pointer hover:text-primary py-0.5 md:py-1 transition-colors text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-500" onclick="applyFilters(true, '${cat}', '${sub}', this)">${sub}</li>`).join('')}
+                            </ul>
+                        </li>
+                    `;
+                });
+                catList.innerHTML = html;
+            }
+
+            // Brands
+            const brandContainer = document.getElementById('brand-filters-container');
+            if(brandContainer) {
+                brandContainer.innerHTML = brands.map(brand => `
+                    <label class="flex items-center space-x-2.5 md:space-x-3 cursor-pointer group">
+                        <input type="checkbox" value="${brand}" class="filter-checkbox filter-brand border-slate-300 rounded" onchange="applyFilters()">
+                        <span class="text-slate-600 text-xs md:text-sm font-medium group-hover:text-primary transition-colors">${brand}</span>
+                    </label>
+                `).join('');
+            }
+        }
+
+        function toggleSidebarCategory(element) {
+            const parent = element.parentElement;
+            const isExpanded = parent.classList.contains('expanded');
+            if(!isExpanded) {
+                parent.classList.add('expanded');
+                element.querySelector('.icon-toggle').innerText = '-';
+            } else {
+                parent.classList.remove('expanded');
+                element.querySelector('.icon-toggle').innerText = '+';
+            }
+        }
+
+        function updateSidebarUI() {
+            document.querySelectorAll('.cat-list-item').forEach(el => {
+                el.classList.remove('active-cat', 'expanded');
+                el.querySelector('.icon-toggle').innerText = '+';
+                if(el.getAttribute('data-cat') === currentFilterCat) {
+                    el.classList.add('active-cat', 'expanded');
+                    el.querySelector('.icon-toggle').innerText = '-';
+                }
+            });
+            document.querySelectorAll('.subcat-item').forEach(el => el.classList.remove('active-subcat'));
+            if(currentFilterSubCat) {
+                const subItems = Array.from(document.querySelectorAll('.subcat-item'));
+                const target = subItems.find(el => el.innerText === currentFilterSubCat.toUpperCase());
+                if(target) target.classList.add('active-subcat');
+            }
+        }
+
+        function setTopFilter(type, btnElement) {
+            currentTopFilter = type;
+            document.querySelectorAll('.top-filter-btn').forEach(btn => {
+                btn.classList.remove('text-darker', 'border-darker');
+                btn.classList.add('border-transparent');
+            });
+            btnElement.classList.remove('border-transparent');
+            btnElement.classList.add('text-darker', 'border-darker');
+            applyFilters();
+        }
+
+        function clearFilters(render = true) {
+            currentFilterCat = 'ALL';
+            currentFilterSubCat = null;
+            currentTopFilter = 'ALL';
+            
+            document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
+            const pMin = document.getElementById('price-min'); if(pMin) pMin.value = '';
+            const pMax = document.getElementById('price-max'); if(pMax) pMax.value = '';
+            const sSelect = document.getElementById('sort-select'); if(sSelect) sSelect.value = 'default';
+            
+            updateSidebarUI();
+            
+            const allBtn = document.querySelector('.top-filter-btn');
+            if(allBtn) {
+                document.querySelectorAll('.top-filter-btn').forEach(b => b.classList.remove('text-darker', 'border-darker'));
+                allBtn.classList.add('text-darker', 'border-darker');
+            }
+            if(render) applyFilters();
+        }
+
+        function applyFilters(fromSidebarClick = false, cat = null, subcat = null, subcatElement = null) {
+            // Update State if clicked from sidebar
+            if (fromSidebarClick) {
+                if(subcat) {
+                    event.stopPropagation();
+                    currentFilterSubCat = subcat;
+                    currentFilterCat = cat;
+                } else {
+                    currentFilterCat = cat;
+                    currentFilterSubCat = null;
+                }
+                updateSidebarUI();
+            }
+
+            // Gather inputs
+            const checkedBrands = Array.from(document.querySelectorAll('.filter-brand:checked')).map(cb => cb.value);
+            const minPrice = parseInt(document.getElementById('price-min')?.value) || 0;
+            const maxPrice = parseInt(document.getElementById('price-max')?.value) || Infinity;
+            const sortVal = document.getElementById('sort-select')?.value || 'default';
+            
+            let filtered = [...products];
+
+            // Filter Category
+            if (currentFilterCat !== 'ALL') {
+                filtered = filtered.filter(p => p.category === currentFilterCat);
+                document.getElementById('shop-title').innerText = currentFilterCat;
+            } else {
+                document.getElementById('shop-title').innerText = 'All Products';
+            }
+
+            // Filter SubCategory
+            if (currentFilterSubCat) {
+                filtered = filtered.filter(p => p.subCategory === currentFilterSubCat);
+                document.getElementById('shop-title').innerText = currentFilterSubCat;
+            }
+
+            // Filter Brands
+            if (checkedBrands.length > 0) {
+                filtered = filtered.filter(p => checkedBrands.includes(p.brand));
+            }
+
+            // Filter Price
+            filtered = filtered.filter(p => p.price >= minPrice && p.price <= maxPrice);
+
+            // Filter Top (New/Sale)
+            if (currentTopFilter === 'NEW') filtered = filtered.filter(p => p.isNew);
+            else if (currentTopFilter === 'SALE') filtered = filtered.filter(p => p.isSale);
+
+            // Sorting
+            if (sortVal === 'price-low') filtered.sort((a,b) => a.price - b.price);
+            else if (sortVal === 'price-high') filtered.sort((a,b) => b.price - a.price);
+
+            // Render
+            const shopGrid = document.getElementById('shop-product-grid');
+            const emptyState = document.getElementById('shop-empty-state');
+            const resultCount = document.getElementById('shop-results-count');
+            
+            if(shopGrid) {
+                if (filtered.length === 0) {
+                    shopGrid.style.display = 'none';
+                    emptyState.style.display = 'block';
+                    resultCount.innerText = `0 results`;
+                } else {
+                    shopGrid.style.display = 'grid';
+                    emptyState.style.display = 'none';
+                    shopGrid.innerHTML = filtered.map(p => createProductCard(p)).join('');
+                    resultCount.innerText = `${filtered.length} results`;
+                }
+                lucide.createIcons();
+            }
+        }
+
+        // --- SEARCH FUNCTIONALITY ---
+        function executeSearch(context = 'desktop') {
+            let inputId = context === 'mobile' ? 'mobile-search-input' : 'header-search-input';
+            const term = document.getElementById(inputId).value.toLowerCase();
+            const categorySelect = document.getElementById('header-search-category');
+            
+            if(!term) return;
+
+            navigate('shop');
+            clearFilters(false);
+            
+            if (context === 'desktop' && categorySelect && categorySelect.value !== 'ALL') {
+                currentFilterCat = categorySelect.value;
+                updateSidebarUI();
+            }
+
+            // Apply custom filter logic overriding applyFilters temporarily just for search
+            let filtered = products.filter(p => p.name.toLowerCase().includes(term) || p.brand.toLowerCase().includes(term));
+            if (currentFilterCat !== 'ALL') {
+                filtered = filtered.filter(p => p.category === currentFilterCat);
+            }
+
+            document.getElementById('shop-title').innerText = `Search: "${term}"`;
+            
+            const shopGrid = document.getElementById('shop-product-grid');
+            const emptyState = document.getElementById('shop-empty-state');
+            document.getElementById('shop-results-count').innerText = `${filtered.length} results`;
+
+            if (filtered.length === 0) {
+                shopGrid.style.display = 'none';
+                emptyState.style.display = 'block';
+            } else {
+                shopGrid.style.display = 'grid';
+                emptyState.style.display = 'none';
+                shopGrid.innerHTML = filtered.map(p => createProductCard(p)).join('');
+            }
+            lucide.createIcons();
+            
+            if(context === 'mobile') closeMobileMenu();
+        }
+
+        // Search Enter Key Event
+        document.getElementById('header-search-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') executeSearch('desktop');
+        });
+        document.getElementById('mobile-search-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') executeSearch('mobile');
+        });
+
+        // --- INITIALIZATION ---
+        window.addEventListener('load', () => {
+            initShopSidebar();
+            renderFeatured('new');
+            renderBlogs();
+            updateCartBadges();
+            navigate('home');
+        });
+    </script>
+</body>
+</html>
