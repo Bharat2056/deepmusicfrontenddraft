@@ -105,8 +105,8 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex space-x-6">
                 <a href="javascript:void(0)" class="hover:text-white transition-colors flex items-center"><i data-lucide="phone" class="w-3.5 h-3.5 mr-2"></i> +977 1-4246061</a>
-                <a href="javascript:void(0)" class="hover:text-white transition-colors flex items-center"><i data-lucide="mail" class="w-3.5 h-3.5 mr-2"></i> info@guitarshopnepal.com</a>
-                <a href="javascript:void(0)" class="hover:text-white transition-colors flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-2"></i> Jyatha, Thamel, Kathmandu</a>
+                <a href="javascript:void(0)" class="hover:text-white transition-colors flex items-center"><i data-lucide="mail" class="w-3.5 h-3.5 mr-2"></i> info@deepmusic.com</a>
+                <a href="javascript:void(0)" class="hover:text-white transition-colors flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-2"></i> Newroad, Kathmandu</a>
             </div>
             <div class="flex space-x-6 items-center">
                 <span class="text-primary font-bold">Nepal's Premier Guitar Destination</span>
@@ -183,8 +183,8 @@
         <nav class="hidden lg:block bg-white border-t border-slate-100 shadow-sm relative z-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <ul class="flex space-x-6 lg:space-x-8 text-xs lg:text-[13px] font-bold text-darker uppercase tracking-wide">
-                    <li><a href="javascript:void(0)" onclick="navigate('home')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Home</a></li>
-                    <li><a href="javascript:void(0)" onclick="navigate('shop')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Shop All</a></li>
+<li><a href="javascript:void(0)" onclick="navigate('home')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Home</a></li>
+<li><a href="javascript:void(0)" onclick="navigate('about')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">About Us</a></li>                    <li><a href="javascript:void(0)" onclick="navigate('shop')" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Shop All</a></li>
                     <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Electric Guitars'})" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Electric</a></li>
                     <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Acoustic Guitars'})" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Acoustic</a></li>
                     <li><a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Bass Guitars'})" class="block py-3 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">Bass</a></li>
@@ -204,8 +204,8 @@
                     <input type="text" id="mobile-search-input" class="w-full bg-slate-100 border border-slate-300 rounded-md py-2.5 px-3 text-sm focus:outline-none focus:border-primary" placeholder="Search products...">
                     <button onclick="executeSearch('mobile')" class="absolute right-3 top-2.5 cursor-pointer"><i data-lucide="search" class="w-5 h-5 text-slate-400"></i></button>
                 </div>
-                <a href="javascript:void(0)" onclick="navigate('home'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Home</a>
-                <a href="javascript:void(0)" onclick="navigate('shop'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Shop All Categories</a>
+<a href="javascript:void(0)" onclick="navigate('home'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Home</a>
+<a href="javascript:void(0)" onclick="navigate('about'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">About Us</a>                <a href="javascript:void(0)" onclick="navigate('shop'); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Shop All Categories</a>
                 <a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Electric Guitars'}); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Electric Guitars</a>
                 <a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Acoustic Guitars'}); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Acoustic Guitars</a>
                 <a href="javascript:void(0)" onclick="navigate('shop', {cat: 'Bass Guitars'}); closeMobileMenu();" class="block px-3 py-2.5 text-[13px] font-bold text-darker border-b border-slate-100 uppercase hover:text-primary">Bass Guitars</a>
@@ -219,30 +219,74 @@
     </header>
 
     <main id="page-home" class="page-view active flex-1">
-        <section class="relative bg-darker text-white overflow-hidden group">
-            <div class="absolute inset-0 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1514649923863-ceaf75b7ec00?q=80&w=2070&auto=format&fit=crop" alt="Deep Music Nepal Banner" class="w-full h-full object-cover opacity-40 scale-105 transition-transform duration-[15s] group-hover:scale-100">
+       <section class="relative bg-darker text-white overflow-hidden h-[500px] md:h-[600px] lg:h-[750px] group">
+            
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 z-10">
+                <img src="https://images.unsplash.com/photo-1514649923863-ceaf75b7ec00?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 scale-105 animate-[pulse_15s_ease-in-out_infinite_alternate]">
                 <div class="absolute inset-0 bg-gradient-to-r from-darker via-darker/90 to-transparent"></div>
-            </div>
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32 lg:py-48">
-                <div class="max-w-2xl">
-                    <span class="inline-block py-1 px-2.5 rounded bg-primary text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 shadow-sm border border-blue-400/50">Nepal's Premier Guitar Destination</span>
-                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 md:mb-6 leading-[1.1] uppercase">
-                        Welcome to <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-400">Deep Music.</span>
-                    </h1>
-                    <p class="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-xl font-light">
-                        Located in the heart of Kathmandu, we offer the finest selection of acoustic and electric guitars, amplifiers, and pro audio gear from top global brands.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
-                        <button onclick="navigate('shop')" class="bg-primary hover:bg-primaryHover text-white px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors text-center shadow-lg shadow-primary/30">
-                            Shop Our Gear
-                        </button>
-                        <button onclick="navigate('brands')" class="bg-transparent border-2 border-white/80 hover:bg-white hover:text-darker text-white px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors text-center backdrop-blur-sm">
-                            Explore Brands
-                        </button>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                    <div class="max-w-2xl transform translate-y-0 transition-transform duration-700 delay-300">
+                        <span class="inline-block py-1 px-2.5 rounded bg-primary text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 shadow-sm border border-blue-400/50">Nepal's Premier Guitar Destination</span>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 md:mb-6 leading-[1.1] uppercase">
+                            Welcome to <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-400">Deep Music.</span>
+                        </h1>
+                        <p class="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-xl font-light">
+                            Located in the heart of Kathmandu, we offer the finest selection of acoustic and electric guitars, amplifiers, and pro audio gear.
+                        </p>
+                       <div class="flex flex-row gap-2 sm:gap-4 w-full sm:w-auto">
+                            <button onclick="navigate('shop')" class="flex-1 sm:flex-none bg-primary hover:bg-primaryHover text-white px-3 py-3 md:px-8 md:py-4 rounded font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest transition-colors text-center shadow-lg shadow-primary/30 whitespace-nowrap">Shop Our Gear</button>
+                            <button onclick="navigate('brands')" class="flex-1 sm:flex-none bg-transparent border-2 border-white/80 hover:bg-white hover:text-darker text-white px-3 py-3 md:px-8 md:py-4 rounded font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest transition-colors text-center backdrop-blur-sm whitespace-nowrap">Explore Brands</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0">
+                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-darker via-darker/90 to-transparent"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                    <div class="max-w-2xl">
+                        <span class="inline-block py-1 px-2.5 rounded bg-primary text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 shadow-sm border border-blue-400/50">Pro Audio & Interfaces</span>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 md:mb-6 leading-[1.1] uppercase">
+                            Build Your <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-400">Dream Studio.</span>
+                        </h1>
+                        <p class="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-xl font-light">
+                            From Focusrite interfaces to studio-grade monitors, find everything you need to produce professional tracks at home.
+                        </p>
+                        <div class="flex flex-row gap-3 md:gap-4">
+                            <button onclick="navigate('shop', {cat: 'Studio Gear'})" class="bg-primary hover:bg-primaryHover text-white px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors text-center shadow-lg shadow-primary/30 whitespace-nowrap">Shop Studio Gear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 z-0">
+                <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-darker via-darker/90 to-transparent"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                    <div class="max-w-2xl">
+                        <span class="inline-block py-1 px-2.5 rounded bg-primary text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 shadow-sm border border-blue-400/50">Expert Maintenance</span>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 md:mb-6 leading-[1.1] uppercase">
+                            Pro Luthier <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-400">Services.</span>
+                        </h1>
+                        <p class="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-xl font-light">
+                            Every guitar purchased comes with a complimentary setup. We also offer fret dressing, intonation, and electronic repairs.
+                        </p>
+                        <div class="flex flex-row gap-3 md:gap-4">
+                            <button onclick="navigate('contact')" class="bg-primary hover:bg-primaryHover text-white px-6 py-3 md:px-8 md:py-4 rounded font-bold text-xs md:text-sm uppercase tracking-widest transition-colors text-center shadow-lg shadow-primary/30 whitespace-nowrap">Book a Setup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+                <button onclick="goToSlide(0)" class="hero-dot w-3 h-3 md:w-4 md:h-4 rounded-full bg-white transition-all shadow-md"></button>
+                <button onclick="goToSlide(1)" class="hero-dot w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/40 hover:bg-white/70 transition-all shadow-md"></button>
+                <button onclick="goToSlide(2)" class="hero-dot w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/40 hover:bg-white/70 transition-all shadow-md"></button>
+            </div>
+            
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-colors hidden md:block"><i data-lucide="chevron-left" class="w-10 h-10"></i></button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-colors hidden md:block"><i data-lucide="chevron-right" class="w-10 h-10"></i></button>
         </section>
 
         <section class="bg-white border-b border-slate-200 py-4 md:py-6 hidden md:block">
@@ -365,14 +409,29 @@
         <section class="py-10 md:py-16 bg-white border-t border-slate-200 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <div class="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-10 border-b border-slate-200 pb-2">
-                    <h2 class="text-2xl md:text-3xl font-black text-darker uppercase tracking-tight mb-4 md:mb-0">Featured Gear</h2>
-                    <div class="flex space-x-4 md:space-x-6 w-full md:w-auto overflow-x-auto hide-scrollbar">
-                        <button onclick="renderFeatured('new')" id="btn-feat-new" class="feat-tab-btn active text-xs md:text-sm font-bold uppercase tracking-wider pb-3 md:pb-4 border-b-[3px] border-primary text-primary transition-colors whitespace-nowrap cursor-pointer">New Arrivals</button>
-                        <button onclick="renderFeatured('best')" id="btn-feat-best" class="feat-tab-btn text-xs md:text-sm font-bold uppercase tracking-wider pb-3 md:pb-4 border-b-[3px] border-transparent text-slate-400 hover:text-darker transition-colors whitespace-nowrap cursor-pointer">Best Sellers</button>
-                        <button onclick="renderFeatured('sale')" id="btn-feat-sale" class="feat-tab-btn text-xs md:text-sm font-bold uppercase tracking-wider pb-3 md:pb-4 border-b-[3px] border-transparent text-slate-400 hover:text-darker transition-colors whitespace-nowrap cursor-pointer">On Sale</button>
-                    </div>
-                </div>
+              <div class="flex justify-between items-center mb-6 md:mb-10 border-b border-slate-200 pb-2 relative z-20">
+    <h2 class="text-2xl md:text-3xl font-black text-darker uppercase tracking-tight">Featured Gear</h2>
+    
+    <button onclick="document.getElementById('featured-dropdown').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 hover:text-primary transition-colors focus:outline-none cursor-pointer bg-slate-50 rounded border border-slate-200">
+        <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+    </button>
+
+    <div id="featured-dropdown" class="hidden absolute top-full right-0 mt-2 w-48 bg-white border border-slate-200 shadow-xl rounded-lg flex-col md:relative md:top-auto md:right-auto md:mt-0 md:w-auto md:bg-transparent md:border-none md:shadow-none md:rounded-none md:flex md:flex-row md:space-x-6 overflow-hidden md:overflow-visible">
+        
+        <button onclick="renderFeatured('new'); document.getElementById('featured-dropdown').classList.add('hidden')" id="btn-feat-new" class="feat-tab-btn active w-full text-left md:w-auto px-4 py-3 md:px-0 md:py-0 text-xs md:text-sm font-bold uppercase tracking-wider md:pb-4 border-l-4 md:border-l-0 md:border-b-[3px] border-primary text-primary transition-colors whitespace-nowrap cursor-pointer hover:bg-slate-50 md:hover:bg-transparent">
+            New Arrivals
+        </button>
+        
+        <button onclick="renderFeatured('best'); document.getElementById('featured-dropdown').classList.add('hidden')" id="btn-feat-best" class="feat-tab-btn w-full text-left md:w-auto px-4 py-3 md:px-0 md:py-0 text-xs md:text-sm font-bold uppercase tracking-wider md:pb-4 border-l-4 md:border-l-0 md:border-b-[3px] border-transparent text-slate-400 hover:text-darker transition-colors whitespace-nowrap cursor-pointer hover:bg-slate-50 md:hover:bg-transparent">
+            Best Sellers
+        </button>
+        
+        <button onclick="renderFeatured('sale'); document.getElementById('featured-dropdown').classList.add('hidden')" id="btn-feat-sale" class="feat-tab-btn w-full text-left md:w-auto px-4 py-3 md:px-0 md:py-0 text-xs md:text-sm font-bold uppercase tracking-wider md:pb-4 border-l-4 md:border-l-0 md:border-b-[3px] border-transparent text-slate-400 hover:text-darker transition-colors whitespace-nowrap cursor-pointer hover:bg-slate-50 md:hover:bg-transparent">
+            On Sale
+        </button>
+        
+    </div>
+</div>
                 
                 <div id="home-featured-coverer" class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 pb-6 md:pb-8">
                     </div>
@@ -548,8 +607,8 @@
                     <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto rounded-full"></div>
                 </div>
                 
-                <div id="home-blog-grid" class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-8 pb-6 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 hide-scrollbar">
-                    </div>
+<div id="home-blog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 pb-6">
+                        </div>
                 
                 <div class="text-center mt-2 md:mt-4">
                     <button onclick="navigate('blog')" class="text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors inline-flex items-center cursor-pointer">
@@ -588,8 +647,8 @@
                 <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full" id="shop-results-count">Showing results</span>
             </div>
 
-            <div class="mb-6 md:mb-8 overflow-x-auto hide-scrollbar pb-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
-                <div class="flex space-x-3 md:space-x-5 min-w-max" id="shop-category-carousel">
+<div class="mb-6 md:mb-8 overflow-x-auto hide-scrollbar py-4 -mx-4 pr-4 pl-8 sm:-mx-6 sm:pr-6 sm:pl-10 lg:mx-0 lg:px-0">
+                    <div class="flex space-x-3 md:space-x-5 min-w-max" id="shop-category-carousel">
                     </div>
             </div>
 
@@ -702,7 +761,7 @@
 
                 <div class="flex flex-col">
                     <span id="pd-brand" class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 block">Brand: Placeholder</span>
-                    <h1 id="pd-name" class="text-3xl md:text-4xl font-extrabold text-gray-900 uppercase tracking-tight mb-3">Product Name</h1>
+                   <h1 id="pd-name" class="text-2xl md:text-4xl font-extrabold text-gray-900 uppercase tracking-tight mb-2 md:mb-3">Product Name</h1>
                     
                     <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-gray-200">
                         <div id="pd-stars" class="flex text-primary">
@@ -713,7 +772,7 @@
                     </div>
                     
                     <div class="mb-6 flex items-end space-x-4">
-                        <span id="pd-price" class="text-4xl font-extrabold text-primary">Rs. 0</span>
+<span id="pd-price" class="text-3xl md:text-4xl font-extrabold text-primary">Rs. 0</span>
                         <span id="pd-old-price" class="text-xl text-gray-400 line-through mb-1 font-medium hidden">Rs. 0</span>
                     </div>
 
@@ -763,7 +822,7 @@
                 </div>
                 
                 <div id="content-tab-desc" class="tab-content active p-6 md:p-12 bg-white text-gray-600 leading-relaxed text-base md:text-lg">
-                    <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Built for the Stage</h3>
+<h3 class="text-lg md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-4 md:mb-6">Built for the Stage</h3>
                     <p class="mb-6">Designed for the working musician, this piece of gear is built to project. We hand-select the products to ensure maximum resonance and structural stability against Kathmandu's varying humidity.</p>
                     <ul class="list-disc pl-6 space-y-3 font-medium text-gray-700">
                         <li>Premium materials for long-lasting durability.</li>
@@ -773,7 +832,7 @@
                 </div>
 
                 <div id="content-tab-specs" class="tab-content hidden p-6 md:p-12 bg-white text-gray-600 leading-relaxed">
-                    <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Technical Specifications</h3>
+<h3 class="text-lg md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-4 md:mb-6">Technical Specifications</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm md:text-base" id="pd-specs-table">
                         </div>
                 </div>
@@ -781,7 +840,7 @@
                 <div id="content-tab-reviews" class="tab-content hidden p-6 md:p-12 bg-white text-gray-600 leading-relaxed">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 border-b border-gray-100 pb-6">
                         <div>
-                            <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-2">Customer Reviews</h3>
+<h3 class="text-lg md:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-2">Customer Reviews</h3>
                             <div class="flex items-center space-x-2 text-primary">
                                 <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
                                 <span class="text-gray-600 font-bold ml-2">5.0 / 5.0 (12 Reviews)</span>
@@ -914,23 +973,30 @@
                     <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 md:p-6 lg:sticky lg:top-28">
                         <h3 class="text-lg md:text-xl font-bold text-darker mb-3 md:mb-4 uppercase tracking-tight">Your order</h3>
                         
-                        <h4 class="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider mt-4">Delivery Method</h4>
-                        <div class="bg-white p-3 md:p-4 rounded border border-slate-200 mb-4 space-y-2 md:space-y-3">
-                            <label class="flex items-start space-x-2 md:space-x-3 cursor-pointer">
-                                <input type="radio" name="delivery" checked class="mt-1 accent-primary">
-                                <div>
-                                    <span class="text-darker block text-xs md:text-sm font-bold">Standard Delivery</span>
-                                    <span class="text-slate-500 text-[10px] md:text-xs">2-3 Business Days (Free)</span>
-                                </div>
-                            </label>
-                            <label class="flex items-start space-x-2 md:space-x-3 cursor-pointer">
-                                <input type="radio" name="delivery" class="mt-1 accent-primary">
-                                <div>
-                                    <span class="text-darker block text-xs md:text-sm font-bold">Express Delivery</span>
-                                    <span class="text-slate-500 text-[10px] md:text-xs">Same Day Delivery (+ NRs 250)</span>
-                                </div>
-                            </label>
-                        </div>
+                        <div class="border-t border-b border-slate-100 py-4 my-2">
+    <label class="block text-xs md:text-sm font-bold text-slate-700 mb-3 uppercase tracking-wider">Delivery Method <span class="text-red-500">*</span></label>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <label class="flex items-start p-3 border border-slate-200 rounded cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary transition-all">
+            <input type="radio" name="delivery" checked class="mt-1 mr-3 accent-primary">
+            <div>
+                <span class="text-darker block text-xs md:text-sm font-bold">Standard Delivery</span>
+                <span class="text-slate-500 text-[10px] md:text-xs">Within 1-3 Business Days (Free)</span>
+            </div>
+        </label>
+        <label class="flex items-start p-3 border border-slate-200 rounded cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary transition-all">
+            <input type="radio" name="delivery" class="mt-1 mr-3 accent-primary">
+            <div>
+                <span class="text-darker block text-xs md:text-sm font-bold">Express Delivery</span>
+                <span class="text-slate-500 text-[10px] md:text-xs">Within 2-3 hrs (+ NRs 250)</span>
+            </div>
+        </label>
+    </div>
+</div>
+
+<div>
+    <label class="block text-xs md:text-sm font-bold text-slate-700 mb-1">Street address <span class="text-red-500">*</span></label>
+    <input type="text" placeholder="House number and street name" required class="w-full border border-slate-300 rounded p-2 md:p-2.5 mb-1 md:mb-2 outline-none focus:border-primary">
+</div>
 
                        <h4 class="text-xs font-bold text-slate-500 mb-3 uppercase tracking-wider mt-6 md:mt-8">Payment Method</h4>
                         <div class="space-y-3 mb-6 md:mb-8">
@@ -961,17 +1027,22 @@
                                 </label>
                                 
                                 <div class="max-h-0 overflow-hidden peer-checked:max-h-40 transition-[max-height] duration-300 ease-in-out bg-primary/5">
-                                    <div class="px-4 pb-4 pt-1 flex gap-3">
-                                        <label class="flex-1 cursor-pointer border border-slate-200 bg-white rounded-md p-3 flex items-center justify-center hover:border-primary transition-all has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary relative shadow-sm">
-                                            <input type="radio" name="wallet_type" value="esewa" checked class="absolute opacity-0 w-0 h-0">
-                                            <img src="images/esewa.webp" alt="eSewa" class="h-8 md:h-8 object-cover">
-                                        </label>
-                                        
-                                        <label class="flex-1 cursor-pointer border border-slate-200 bg-white rounded-md p-3 flex items-center justify-center hover:border-primary transition-all has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary relative shadow-sm">
-                                            <input type="radio" name="wallet_type" value="khalti" class="absolute opacity-0 w-0 h-0">
-                                            <img src="images/khalti.png" alt="Khalti" class="h-8 md:h-8 object-cover">
-                                        </label>
-                                    </div>
+                                    <div class="px-4 pb-4 pt-1 flex gap-2 md:gap-3">
+    <label class="flex-1 cursor-pointer border border-slate-200 bg-white rounded-md p-2 md:p-3 flex items-center justify-center hover:border-primary transition-all has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary relative shadow-sm">
+        <input type="radio" name="wallet_type" value="esewa" checked class="absolute opacity-0 w-0 h-0">
+        <img src="images/esewa.webp" alt="eSewa" class="h-6 md:h-8 object-cover">
+    </label>
+    
+    <label class="flex-1 cursor-pointer border border-slate-200 bg-white rounded-md p-2 md:p-3 flex items-center justify-center hover:border-primary transition-all has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary relative shadow-sm">
+        <input type="radio" name="wallet_type" value="khalti" class="absolute opacity-0 w-0 h-0">
+        <img src="images/khalti.png" alt="Khalti" class="h-6 md:h-8 object-cover">
+    </label>
+
+    <label class="flex-1 cursor-pointer border border-slate-200 bg-white rounded-md p-2 md:p-3 flex items-center justify-center hover:border-primary transition-all has-[:checked]:border-primary has-[:checked]:ring-1 has-[:checked]:ring-primary relative shadow-sm">
+        <input type="radio" name="wallet_type" value="fonepay" class="absolute opacity-0 w-0 h-0">
+        <img src="https://fonepay.com/images/logo.png" alt="Fonepay" class="h-4 md:h-6 object-cover">
+    </label>
+</div>
                                 </div>
                             </div>
 
@@ -1035,23 +1106,70 @@
                 <div class="relative z-10 text-center text-white p-4 md:p-6">
                     <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tight mb-2 md:mb-4">Our Story</h1>
                     <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-4 md:mb-6 rounded-full"></div>
-                    <p class="text-sm md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">Deep Music Nepal is dedicated to elevating the music scene with authentic gear, top-tier brands, and expert service.</p>
+                    <p class="text-sm md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">Deep Music is dedicated to elevating the music scene in Nepal with authentic gear, top-tier brands, and expert service.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-10 md:mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-16 md:mb-24">
                 <div>
                     <h2 class="text-2xl md:text-4xl font-black text-darker uppercase tracking-tight mb-4 md:mb-6">
-                        The Deep Music Nepal Mission
+                        The Deep Music Mission
                     </h2>
                     <div class="space-y-4 md:space-y-6 text-slate-600 leading-relaxed text-sm md:text-lg">
                         <p>Established with a simple goal: to provide the local music community in Kathmandu with reliable, high-quality instruments and parts that were previously difficult to source.</p>
-                        <p>Located in Jyatha, Thamel, we are proud to be the official distributor for major brands like PRS Guitars, Fender, Cort, NUX, and Blackstar. Every item we stock is <strong class="text-darker">100% genuine</strong>.</p>
+                        <p>Located in the heart of Newroad, Kathmandu, we are proud to be the official distributor for major brands like PRS Guitars, Fender, Cort, NUX, and Blackstar. Every item we stock is <strong class="text-darker">100% genuine</strong>, imported directly from the manufacturers.</p>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-3 md:gap-4 h-full">
                     <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded shadow-lg aspect-[3/4]">
                     <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded shadow-lg aspect-[3/4] mt-6 md:mt-12">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-slate-50 py-16 md:py-24 border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-black text-darker uppercase tracking-tight mb-10 md:mb-16">Why Choose Deep Music?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-primary border border-slate-100">
+                            <i data-lucide="shield-check" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-darker uppercase tracking-wider mb-3">100% Authentic Gear</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed max-w-xs">No fakes, no replicas. We are official authorized dealers for every brand we carry, ensuring full warranties.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-primary border border-slate-100">
+                            <i data-lucide="settings" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-darker uppercase tracking-wider mb-3">Pro Luthier Setups</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed max-w-xs">Every guitar leaves our shop perfectly set up for Kathmandu's climate by our experienced in-house technicians.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-6 text-primary border border-slate-100">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-darker uppercase tracking-wider mb-3">Community Hub</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed max-w-xs">More than a shop. We host clinics, support local artists, and provide a space for musicians to connect.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 md:mt-24">
+            <div class="bg-darker rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl">
+                <div class="w-full md:w-1/2 h-64 md:h-auto">
+                    <img src="https://images.unsplash.com/photo-1550291652-6ea9114a47b1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
+                </div>
+                <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center text-white">
+                    <span class="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-3">Experience the Gear</span>
+                    <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight mb-6">Visit Our Newroad Showroom</h2>
+                    <p class="text-slate-300 mb-8 leading-relaxed text-sm md:text-base">
+                        Seeing a guitar online is one thing, but holding it, feeling the neck, and hearing the resonance in person is another. We've built our showroom to be a comfortable environment where you can plug into our demo amps and take your time finding the perfect instrument.
+                    </p>
+                    <button onclick="navigate('contact')" class="self-start bg-primary text-white font-bold text-xs md:text-sm uppercase tracking-widest py-3 px-8 rounded hover:bg-primaryHover transition-colors shadow-lg cursor-pointer">
+                        Get Directions
+                    </button>
                 </div>
             </div>
         </div>
@@ -1075,7 +1193,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-darker uppercase tracking-widest text-xs md:text-sm mb-1">Address</h4>
-                                <p class="text-sm md:text-base text-slate-600 leading-relaxed">Jyatha, Thamel<br>Kathmandu, Nepal</p>
+                                <p class="text-sm md:text-base text-slate-600 leading-relaxed">Newroad<br>Kathmandu, Nepal</p>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -1093,7 +1211,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-darker uppercase tracking-widest text-xs md:text-sm mb-1">Email</h4>
-                                <p class="text-sm md:text-base text-slate-600 leading-relaxed">info@guitarshopnepal.com</p>
+                                <p class="text-sm md:text-base text-slate-600 leading-relaxed">info@deepmusic.com</p>
                             </div>
                         </div>
                     </div>
@@ -1130,7 +1248,7 @@
             <div class="w-full h-64 md:h-96 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 relative mt-6 md:mt-8">
                 <div class="absolute inset-0 flex items-center justify-center text-slate-400 font-bold text-xs md:text-sm uppercase tracking-widest flex-col">
                     <i data-lucide="map" class="w-8 h-8 md:w-12 md:h-12 mb-3 md:mb-4 opacity-50"></i>
-                    Interactive Google Map (Jyatha, Thamel)
+                    Interactive Google Map (Newroad, Kathmandu)
                 </div>
             </div>
         </div>
@@ -1203,28 +1321,77 @@
         </div>
     </main>
 
-    <main id="page-endorsement" class="page-view bg-white py-10 md:py-16 flex-1">
+   <main id="page-endorsement" class="page-view bg-white py-10 md:py-16 flex-1">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10 md:mb-16">
-                <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Our Endorsement</h1>
+                <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Our Artists</h1>
                 <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-4 md:mb-6 rounded-full"></div>
-                <p class="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto">Professionals who trust Deep Music Nepal for their tone on stage and in the studio.</p>
+                <p class="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto">Professionals who trust Deep Music for their tone on stage and in the studio. We are proud to support the backbone of the Nepali music industry.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-16">
                 <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
-                    <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=800&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all">
-                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4">
-                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Bipul C.</h3>
-                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Acoustic Legend</p>
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4 bg-white relative z-10">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Bipul Chettri</h3>
+                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Acoustic Folk Legend</p>
                     </div>
                 </div>
                 <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a1a2a5fa50bc?q=80&w=800&auto=format&fit=crop" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all">
-                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4">
-                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Sabin R.</h3>
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a1a2a5fa50bc?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4 bg-white relative z-10">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Sabin Rai</h3>
                         <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Rock Vocalist</p>
                     </div>
                 </div>
+                <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4 bg-white relative z-10">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Albatross</h3>
+                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Pioneers of Nepali Rock</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4 bg-white relative z-10">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Cobweb</h3>
+                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Heavy Metal Icons</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4 bg-white relative z-10">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Mukti & Revival</h3>
+                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Blues Rock</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 rounded-lg overflow-hidden border border-slate-200 cursor-pointer group" onclick="navigate('endorsement-single')">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516280440502-690226dd1c39?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="p-5 md:p-6 text-center border-t border-primary border-t-[3px] md:border-t-4 bg-white relative z-10">
+                        <h3 class="text-lg md:text-xl font-black text-darker uppercase group-hover:text-primary transition-colors">Sushant KC</h3>
+                        <p class="text-xs md:text-sm font-bold text-slate-500 mt-1 uppercase">Pop Sensation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-primary/10 rounded-xl p-8 md:p-12 text-center border border-primary/20">
+                <h3 class="text-2xl font-black text-darker uppercase tracking-tight mb-3">Looking for Support?</h3>
+                <p class="text-slate-600 mb-6 max-w-xl mx-auto text-sm md:text-base">We are always on the lookout for emerging talent in the Nepali music scene. If you're touring, recording, and need reliable gear support, let's talk.</p>
+                <button onclick="navigate('contact')" class="bg-darker text-white font-bold text-xs md:text-sm uppercase tracking-widest py-3 px-8 rounded hover:bg-slate-800 transition-colors shadow-lg cursor-pointer">
+                    Contact for Collaboration
+                </button>
             </div>
         </div>
     </main>
@@ -1234,21 +1401,69 @@
             <nav class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 border-b border-slate-200 pb-3 md:pb-4 flex items-center space-x-2 font-medium">
                 <a href="javascript:void(0)" onclick="navigate('home')" class="hover:text-primary cursor-pointer"><i data-lucide="home" class="w-3 h-3 md:w-4 md:h-4"></i></a> 
                 <span>/</span> 
-                <a href="javascript:void(0)" onclick="navigate('endorsement')" class="hover:text-primary uppercase tracking-wider text-[10px] md:text-xs cursor-pointer">Endorsement</a> 
+                <a href="javascript:void(0)" onclick="navigate('endorsement')" class="hover:text-primary uppercase tracking-wider text-[10px] md:text-xs cursor-pointer">Artists</a> 
                 <span>/</span> 
                 <span class="text-darker uppercase tracking-wider text-[10px] md:text-xs font-bold">Bipul Chettri</span>
             </nav>
+            
             <header class="text-center mb-8 md:mb-10">
                 <span class="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-2 md:mb-3 block">Acoustic Folk Legend</span>
                 <h1 class="text-3xl md:text-5xl font-black text-darker tracking-tight leading-tight mb-4 md:mb-6 uppercase">Bipul Chettri</h1>
             </header>
-            <div class="rounded-lg overflow-hidden aspect-video mb-8 md:mb-10 border border-slate-100 shadow-lg relative">
-                <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
+            
+            <div class="rounded-xl overflow-hidden aspect-[21/9] mb-12 shadow-2xl relative">
+                <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1600&auto=format&fit=crop" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-darker/60 to-transparent"></div>
             </div>
-            <div class="prose max-w-none text-slate-600 leading-relaxed text-sm md:text-base">
-                <h3 class="text-xl md:text-2xl font-black text-darker mb-3 md:mb-4 uppercase tracking-tight">About The Artist</h3>
-                <p>Bipul Chettri relies on the pristine setup provided by Deep Music Nepal for his acoustic tours.</p>
-                <button onclick="navigate('endorsement')" class="mt-4 md:mt-6 text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors flex items-center cursor-pointer">
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2 prose max-w-none text-slate-600 leading-relaxed text-sm md:text-base">
+                    <h3 class="text-xl md:text-2xl font-black text-darker mb-4 uppercase tracking-tight">About The Artist</h3>
+                    <p>Bipul Chettri blends Himalayan folk with contemporary acoustic sensibilities, creating a sound that resonates deeply with Nepalis across the globe. Since his debut album, he has been a pioneer of independent music.</p>
+                    <p>Known for his intricate fingerpicking and soaring vocal melodies, Bipul requires instruments that project clearly and withstand the rigors of international touring.</p>
+                    
+                    <h3 class="text-xl md:text-2xl font-black text-darker mt-10 mb-4 uppercase tracking-tight">Latest Performance</h3>
+                    <div class="relative rounded-lg overflow-hidden aspect-video bg-slate-800 border border-slate-200 shadow-md group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-14 h-14 bg-primary/90 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform backdrop-blur-sm">
+                                <i data-lucide="play" class="w-6 h-6 ml-1 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-6 lg:sticky lg:top-28">
+                        <h3 class="text-lg font-black text-darker uppercase tracking-tight border-b border-slate-200 pb-3 mb-5">Gear of Choice</h3>
+                        <p class="text-xs text-slate-500 mb-5 leading-relaxed">Bipul relies on the pristine setup provided by Deep Music for his acoustic tours. Here is what he plays.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 bg-white p-3 rounded border border-slate-100 shadow-sm cursor-pointer hover:border-primary transition-colors" onclick="navigate('product', {id: 3})">
+                                <img src="images/3.jpeg" class="w-12 h-12 rounded object-cover">
+                                <div>
+                                    <h4 class="text-xs font-bold text-darker">Cort Earth 70</h4>
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Acoustic</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 bg-white p-3 rounded border border-slate-100 shadow-sm cursor-pointer hover:border-primary transition-colors" onclick="navigate('product', {id: 9})">
+                                <img src="images/16.jpeg" class="w-12 h-12 rounded object-cover">
+                                <div>
+                                    <h4 class="text-xs font-bold text-darker">Ernie Ball Strings</h4>
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Accessories</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="navigate('shop')" class="w-full mt-6 border-2 border-darker text-darker font-bold text-xs uppercase tracking-widest py-3 rounded hover:bg-darker hover:text-white transition-colors">
+                            Shop All Gear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-slate-200">
+                <button onclick="navigate('endorsement')" class="text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors flex items-center cursor-pointer">
                     <i data-lucide="arrow-left" class="w-3 h-3 md:w-4 md:h-4 mr-2"></i> Back to Artists
                 </button>
             </div>
@@ -1257,43 +1472,103 @@
 
     <main id="page-blog" class="page-view bg-slate-50 py-10 md:py-16 flex-1">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 md:mb-12">
+            <div class="text-center mb-10 md:mb-16">
                 <h1 class="text-3xl md:text-5xl font-black text-darker uppercase tracking-tight mb-3 md:mb-4">Tone Journal</h1>
-                <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto rounded-full mb-8 md:mb-12"></div>
-            </div>
-            <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="w-12 md:w-16 h-1 md:h-1.5 bg-primary mx-auto mb-6 rounded-full"></div>
+                <p class="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto">Expert advice, gear reviews, maintenance tips, and stories from the heart of the Nepali music community.</p>
+                
+                <div class="flex flex-wrap justify-center gap-2 mt-8">
+                    <button class="px-4 py-2 rounded-full bg-darker text-white text-xs font-bold uppercase tracking-widest">All</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-primary hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest shadow-sm">Guides</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-primary hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest shadow-sm">Reviews</button>
+                    <button class="px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-primary hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest shadow-sm">Artist Spotlight</button>
                 </div>
+            </div>
+            
+            <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                </div>
+
+            <div class="mt-16 bg-white border border-slate-200 rounded-xl p-8 md:p-12 text-center shadow-sm">
+                <i data-lucide="mail" class="w-10 h-10 mx-auto text-primary mb-4"></i>
+                <h3 class="text-2xl font-black text-darker uppercase tracking-tight mb-2">Never Miss a Beat</h3>
+                <p class="text-slate-500 mb-6 max-w-md mx-auto text-sm">Subscribe to get the latest gear reviews, local artist interviews, and exclusive store discounts delivered directly to your inbox.</p>
+                <form onsubmit="event.preventDefault(); showToast('Subscribed successfully!'); this.reset();" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                    <input type="email" placeholder="Enter your email" required class="flex-1 border border-slate-300 rounded p-3 focus:ring-1 focus:ring-primary outline-none text-sm">
+                    <button type="submit" class="bg-primary text-white font-bold text-xs uppercase tracking-widest py-3 px-6 rounded hover:bg-primaryHover transition-colors shadow-md">Subscribe</button>
+                </form>
+            </div>
         </div>
     </main>
 
-    <main id="page-blog-single" class="page-view bg-white py-8 md:py-12 flex-1">
+   <main id="page-blog-single" class="page-view bg-white py-8 md:py-16 flex-1">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 border-b border-slate-200 pb-3 md:pb-4 flex items-center space-x-2 font-medium">
+            <nav class="text-xs md:text-sm text-slate-500 mb-8 border-b border-slate-200 pb-4 flex items-center space-x-2 font-medium">
                 <a href="javascript:void(0)" onclick="navigate('home')" class="hover:text-primary cursor-pointer"><i data-lucide="home" class="w-3 h-3 md:w-4 md:h-4"></i></a> 
                 <span>/</span> 
-                <a href="javascript:void(0)" onclick="navigate('blog')" class="hover:text-primary uppercase tracking-wider text-[10px] md:text-xs cursor-pointer">Blog</a> 
+                <a href="javascript:void(0)" onclick="navigate('blog')" class="hover:text-primary uppercase tracking-wider text-[10px] md:text-xs cursor-pointer">Tone Journal</a> 
                 <span>/</span> 
                 <span class="text-darker uppercase tracking-wider text-[10px] md:text-xs font-bold truncate max-w-[150px] sm:max-w-none">Choosing Your First Acoustic</span>
             </nav>
-            <header class="text-center mb-8 md:mb-10">
-                <span class="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-2 md:mb-3 block">Guides & Advice</span>
-                <h1 class="text-2xl md:text-5xl font-black text-darker tracking-tight leading-tight mb-4 md:mb-6">Choosing Your First Acoustic Guitar</h1>
+
+            <header class="text-center mb-10">
+                <span class="text-primary font-bold uppercase tracking-widest text-[10px] md:text-xs mb-3 block">Guides & Advice</span>
+                <h1 class="text-3xl md:text-5xl font-black text-darker tracking-tight leading-tight mb-6 uppercase">Choosing Your First Acoustic Guitar: A Complete Guide</h1>
+                
+                <div class="flex items-center justify-center space-x-4 text-left">
+                    <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-darker">Deep Music Team</p>
+                        <p class="text-xs text-slate-500">May 15, 2026 • 5 min read</p>
+                    </div>
+                </div>
             </header>
-            <div class="rounded-lg overflow-hidden aspect-[16/9] mb-8 md:mb-12 shadow-lg border border-slate-100">
+
+            <div class="rounded-xl overflow-hidden aspect-[16/9] mb-12 shadow-xl border border-slate-100">
                 <img src="https://images.unsplash.com/photo-1520166012956-add9ba0ee12b?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
             </div>
-            <article class="prose prose-sm md:prose-lg max-w-none text-slate-600 space-y-4 md:space-y-6">
-                <p class="lead text-base md:text-xl text-darker font-medium">Starting your musical journey is exciting, but walking into the shop and seeing walls of instruments can be overwhelming.</p>
-                <h3 class="text-xl md:text-2xl font-bold text-darker mt-8 md:mt-10 mb-3 md:mb-4 uppercase tracking-tight">1. Understand Body Shapes</h3>
-                <p>The size and shape of an acoustic guitar dramatically affect both its sound and how comfortable it is to play.</p>
+
+            <article class="prose prose-slate md:prose-lg max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-a:text-primary text-slate-600">
+                <p class="lead text-lg md:text-xl text-slate-700 font-medium">Starting your musical journey is exciting, but walking into a shop and seeing walls of instruments can be overwhelming. Let us break down exactly what you need to look for when buying your very first acoustic guitar in Nepal.</p>
+                
+                <h3 class="text-xl md:text-2xl font-bold text-darker mt-8 mb-4 uppercase tracking-tight">1. Understand Body Shapes</h3>
+                <p>The size and shape of an acoustic guitar dramatically affect both its sound and how comfortable it is to play. If it is too big, you won't want to practice.</p>
                 <ul>
-                    <li><strong class="text-darker">Dreadnought:</strong> Perfect for strumming and volume.</li>
-                    <li><strong class="text-darker">Concert / OM:</strong> Perfect for fingerpicking.</li>
+                    <li><strong class="text-darker">Dreadnought:</strong> The most common shape. It has a large body, offering a loud, boomy sound with strong bass. Perfect for strumming and vocal accompaniment.</li>
+                    <li><strong class="text-darker">Concert / OM (Orchestra Model):</strong> Smaller and thinner than a dreadnought. It produces a brighter, more balanced tone. Highly recommended for fingerpicking and smaller players.</li>
+                    <li><strong class="text-darker">Parlor:</strong> Very small and compact. Excellent for traveling or playing on the couch.</li>
                 </ul>
+
+                <blockquote class="border-l-4 border-primary pl-4 py-1 my-6 italic text-slate-500 bg-slate-50 rounded-r pr-4">
+                    "Don't just buy the guitar that looks the coolest. Buy the guitar that feels the most comfortable against your body." - Our Lead Luthier
+                </blockquote>
+
+                <h3 class="text-xl md:text-2xl font-bold text-darker mt-8 mb-4 uppercase tracking-tight">2. Solid Top vs. Laminate</h3>
+                <p>The "top" (the face of the guitar) is the most important piece of wood for sound projection.</p>
+                <p><strong>Laminate tops</strong> are made of several thin layers of wood pressed together. They are cheaper and highly resistant to temperature and humidity changes (which is great for Kathmandu's monsoon season), but they don't resonate as well.</p>
+                <p><strong>Solid tops</strong> are made from a single, solid piece of wood (usually Spruce or Cedar). They vibrate much better, resulting in a richer, louder tone that actually improves with age.</p>
+
+                <h3 class="text-xl md:text-2xl font-bold text-darker mt-8 mb-4 uppercase tracking-tight">3. The Deep Music Setup Guarantee</h3>
+                <p>A poorly set-up guitar will have strings that are too high off the fretboard, making it painful to press down. At Deep Music, <strong>every single guitar</strong> we sell goes through a professional setup before it leaves the store. We adjust the truss rod, file the nut, and lower the saddle so your first playing experience is painless and inspiring.</p>
             </article>
-            <div class="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-slate-200">
-                <button onclick="navigate('blog')" class="text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors flex items-center cursor-pointer">
-                    <i data-lucide="arrow-left" class="w-3 h-3 md:w-4 md:h-4 mr-2"></i> Back to all posts
+
+            <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded uppercase tracking-widest">Beginners</span>
+                    <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded uppercase tracking-widest">Acoustic</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Share:</span>
+                    <button class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></button>
+                    <button class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></button>
+                    <button class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-colors"><i data-lucide="link" class="w-4 h-4"></i></button>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center md:text-left">
+                <button onclick="navigate('blog')" class="text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-darker transition-colors inline-flex items-center cursor-pointer">
+                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i> Back to all posts
                 </button>
             </div>
         </div>
@@ -1326,6 +1601,7 @@
                     <h4 class="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 text-white">Information</h4>
                     <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-slate-400 font-medium">
                         <li><a href="javascript:void(0)" onclick="navigate('about')" class="hover:text-primary transition-colors cursor-pointer">About Us</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigate('endorsement')" class="hover:text-primary transition-colors cursor-pointer">Our Artists</a></li>
                         <li><a href="javascript:void(0)" onclick="navigate('contact')" class="hover:text-primary transition-colors cursor-pointer">Contact</a></li>
                         <li><a href="javascript:void(0)" onclick="navigate('faq')" class="hover:text-primary transition-colors cursor-pointer">FAQ</a></li>
                     </ul>
@@ -1333,9 +1609,9 @@
                 <div>
                     <h4 class="text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 text-white">Store Address</h4>
                     <ul class="space-y-2 md:space-y-3 text-xs md:text-sm text-slate-400 font-medium">
-                        <li class="flex items-start"><i data-lucide="map-pin" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 mt-0.5 text-primary"></i> Jyatha, Thamel, Kathmandu</li>
+                        <li class="flex items-start"><i data-lucide="map-pin" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 mt-0.5 text-primary"></i> Newroad, Kathmandu</li>
                         <li class="flex items-center"><i data-lucide="phone" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 text-primary"></i> +977 1-4246061</li>
-                        <li class="flex items-center"><i data-lucide="mail" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 text-primary"></i> info@guitarshopnepal.com</li>
+                        <li class="flex items-center"><i data-lucide="mail" class="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 md:mr-3 text-primary"></i> info@deepmusic.com</li>
                     </ul>
                 </div>
             </div>
@@ -1970,15 +2246,14 @@
             lucide.createIcons();
         }
 
-        // --- BLOG RENDERING LOGIC ---
-        function createBlogCard(article, isCarouselItem = false) {
-            // Updated min width to 45% for mobile so that at least two cards are visible on the viewport
-            const sizingClasses = isCarouselItem 
-                ? 'w-[75%] sm:w-[45%] md:w-auto flex-shrink-0 snap-start' 
-                : '';
+       function createBlogCard(article, isCarouselItem = false) {
+            // Hide the 3rd item on mobile so only 2 are shown, but show all 3 on desktop
+            const sizingClasses = (isCarouselItem && article.index === 2) 
+                ? 'hidden md:flex' 
+                : 'flex';
 
             return `
-                <div class="bg-white flex flex-col rounded-lg  overflow-hidden border border-slate-200 shadow-sm group cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all text-left ${sizingClasses}" onclick="navigate('blog-single')">
+                <div class="bg-white ${sizingClasses} flex-col rounded-lg overflow-hidden border border-slate-200 shadow-sm group cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all text-left" onclick="navigate('blog-single')">
                     <div class="aspect-[16/10] overflow-hidden">
                         <img src="${article.img}?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -2184,19 +2459,19 @@
             }
         }
 
-        function setTopFilter(type, btnElement) {
+      function setTopFilter(type, btnElement) {
             if(currentTopFilter === type) {
                 currentTopFilter = 'ALL';
-                btnElement.classList.remove('border-darker', 'bg-darker', 'text-white');
+                btnElement.classList.remove('border-darker', 'bg-slate-100', 'text-darker');
                 btnElement.classList.add('border-slate-300', 'text-slate-600');
             } else {
                 currentTopFilter = type;
                 document.querySelectorAll('.top-filter-btn').forEach(btn => {
-                    btn.classList.remove('border-darker', 'bg-darker', 'text-white');
+                    btn.classList.remove('border-darker', 'bg-slate-100', 'text-darker');
                     btn.classList.add('border-slate-300', 'text-slate-600');
                 });
                 btnElement.classList.remove('border-slate-300', 'text-slate-600');
-                btnElement.classList.add('border-darker', 'bg-darker', 'text-white');
+                btnElement.classList.add('border-darker', 'bg-slate-100', 'text-darker');
             }
             applyFilters();
         }
@@ -2208,11 +2483,9 @@
             
             document.querySelectorAll('.filter-checkbox').forEach(cb => cb.checked = false);
             
-            // Clear pricing inputs
             const pMin = document.getElementById('price-min'); if(pMin) pMin.value = '';
             const pMax = document.getElementById('price-max'); if(pMax) pMax.value = '';
             
-            // Clear search box inputs
             const dSearch = document.getElementById('header-search-input'); if(dSearch) dSearch.value = '';
             const mSearch = document.getElementById('mobile-search-input'); if(mSearch) mSearch.value = '';
             
@@ -2221,7 +2494,7 @@
             updateSidebarUI();
             
             document.querySelectorAll('.top-filter-btn').forEach(btn => {
-                btn.classList.remove('border-darker', 'bg-darker', 'text-white');
+                btn.classList.remove('border-darker', 'bg-slate-100', 'text-darker');
                 btn.classList.add('border-slate-300', 'text-slate-600');
             });
             
@@ -2364,6 +2637,37 @@
         }
 
         // --- INITIALIZATION ---
+      // --- HERO CAROUSEL LOGIC ---
+        // (Moved outside the load event so HTML onclick can see these functions)
+        let currentSlide = 0;
+        let slideInterval;
+
+        function goToSlide(n) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            if(slides.length === 0) return;
+
+            slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
+            slides[currentSlide].classList.replace('z-10', 'z-0');
+            if(dots[currentSlide]) dots[currentSlide].classList.replace('bg-white', 'bg-white/40');
+
+            currentSlide = (n + slides.length) % slides.length;
+
+            slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
+            slides[currentSlide].classList.replace('z-0', 'z-10');
+            if(dots[currentSlide]) dots[currentSlide].classList.replace('bg-white/40', 'bg-white');
+            
+            resetCarouselTimer();
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+        function resetCarouselTimer() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
+        }
+
+        // --- INITIALIZATION ---
         window.addEventListener('load', () => {
             initShopSidebar();
             renderFeatured('new');
@@ -2372,6 +2676,10 @@
             renderCartDrawer();
             navigate('home');
             initPromoPopup(); // Initialize popup
+
+            // Start carousel
+            const slides = document.querySelectorAll('.hero-slide');
+            if(slides.length > 0) resetCarouselTimer();
         });
     </script>
 </body>
