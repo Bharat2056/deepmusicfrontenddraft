@@ -2796,19 +2796,16 @@
             }
         }
 
-       // --- ACCOUNT LOGIN STATE LOGIC ---
-        let isLoggedIn = false;
+       let isLoggedIn = false;
         
-        // This object acts as our dynamic "Database" for the prototype
-        let currentUser = {
-            name: "John Doe",
-            email: "john@deepmusic.com",
-            phone: "+977 (Add Phone)",
-            orders: [] // Array to hold dynamic orders
-        };
+        // This acts as our temporary "Database" of registered users
+        let registeredUsers = [];
+        
+        // The currently active user
+        let currentUser = null;
 
         function updateAccountView() {
-            if (isLoggedIn) {
+            if (isLoggedIn && currentUser) {
                 document.getElementById('account-auth-section').classList.add('hidden');
                 document.getElementById('account-dashboard-section').classList.remove('hidden');
                 
@@ -2820,7 +2817,7 @@
 
                 // Render dynamic Orders
                 const ordersContainer = document.getElementById('dash-orders-container');
-                if (currentUser.orders.length === 0) {
+                if (!currentUser.orders || currentUser.orders.length === 0) {
                     ordersContainer.innerHTML = '<p class="text-xs text-slate-500 italic p-4 bg-slate-50 rounded border border-slate-100 text-center">You haven\'t placed any orders yet.</p>';
                 } else {
                     ordersContainer.innerHTML = currentUser.orders.map(order => `
@@ -2831,7 +2828,7 @@
                             </div>
                             <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded uppercase">${order.status}</span>
                         </div>
-                    `).reverse().join(''); // Reverse to show newest first
+                    `).reverse().join(''); 
                 }
                 
             } else {
@@ -2844,26 +2841,47 @@
 
         function handleLogin() {
             const emailInput = document.getElementById('login-email').value;
-            if(emailInput) {
-                currentUser.email = emailInput;
-                if(currentUser.name === "John Doe") currentUser.name = emailInput.split('@')[0]; 
+            const passwordInput = document.getElementById('login-password').value;
+            
+            // Check if the user exists in our temporary database
+            const foundUser = registeredUsers.find(u => u.email === emailInput && u.password === passwordInput);
+            
+            if (foundUser) {
+                currentUser = foundUser;
+                isLoggedIn = true;
+                showToast('Logged in successfully!');
+                updateAccountView();
+                document.getElementById('form-login').reset();
+            } else {
+                // If user is not found, show an error and stop them from logging in
+                alert("Account not found or incorrect password. Please register first.");
+                showToast('Login failed.');
             }
-            isLoggedIn = true;
-            showToast('Logged in successfully!');
-            updateAccountView();
-            document.getElementById('form-login').reset();
         }
 
         function handleRegister() {
             const nameInput = document.getElementById('reg-name').value;
             const emailInput = document.getElementById('reg-email').value;
-            const phoneInput = document.getElementById('reg-phone').value; // Capture phone
+            const phoneInput = document.getElementById('reg-phone').value;
+            const passwordInput = document.getElementById('reg-password').value;
             
-            if(nameInput && emailInput) {
-                currentUser.name = nameInput;
-                currentUser.email = emailInput;
-                if(phoneInput) currentUser.phone = phoneInput; // Save phone
+            // Check if email is already registered
+            if (registeredUsers.find(u => u.email === emailInput)) {
+                alert("This email is already registered. Please sign in.");
+                return;
             }
+
+            // Create a new user object and save it to our "database"
+            const newUser = {
+                name: nameInput,
+                email: emailInput,
+                phone: phoneInput || "+977 (Add Phone)",
+                password: passwordInput,
+                orders: []
+            };
+            
+            registeredUsers.push(newUser);
+            currentUser = newUser;
             
             isLoggedIn = true;
             showToast('Account created successfully!');
@@ -2873,6 +2891,7 @@
 
         function handleLogout() {
             isLoggedIn = false;
+            currentUser = null;
             showToast('Logged out successfully!');
             updateAccountView();
             navigate('home'); 
@@ -2884,7 +2903,6 @@
             const editMode = document.getElementById('profile-edit');
             
             if (editMode.classList.contains('hidden')) {
-                // Show edit form and pre-fill with current user values
                 document.getElementById('edit-name').value = currentUser.name;
                 document.getElementById('edit-email').value = currentUser.email;
                 document.getElementById('edit-phone').value = currentUser.phone === "+977 (Add Phone)" ? "" : currentUser.phone;
@@ -2892,22 +2910,17 @@
                 viewMode.classList.add('hidden');
                 editMode.classList.remove('hidden');
             } else {
-                // Cancel/Hide edit form
                 viewMode.classList.remove('hidden');
                 editMode.classList.add('hidden');
             }
         }
 
         function saveProfile() {
-            // Save new values to currentUser object
             currentUser.name = document.getElementById('edit-name').value;
             currentUser.email = document.getElementById('edit-email').value;
             currentUser.phone = document.getElementById('edit-phone').value || "+977 (Add Phone)";
             
-            // Update the UI
             updateAccountView();
-            
-            // Switch back to view mode and notify user
             toggleEditProfile();
             showToast('Profile updated successfully!');
         }
